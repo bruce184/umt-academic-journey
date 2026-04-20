@@ -97,8 +97,10 @@ This repository is also part of a cleanup effort to reduce scattered school repo
 
 - `Helloworld1487`
   - now located under `year-2-2024-2025/s06-sum25/subjects/intro-to-software-engineering/labs/helloworld1487`
+  - old standalone GitHub repository has been removed after consolidation
 - `TechOfWebDev-LAB9`
   - now located under `year-3-2025-2026/s07-fall25/subjects/tech-of-web/labs/lab9`
+  - old standalone GitHub repository has been removed after consolidation
 
 ### Kept separate for now
 
