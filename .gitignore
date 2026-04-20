@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.env
+.env.*
+!.env.example
+*.db
+*.zip
+*.obj
+*.log
+*.idb
+*.pdb
+.DS_Store
+Thumbs.db

@@ -1,0 +1,24 @@
+{
+  "name": "techofwebdev-lab9",
+  "version": "1.0.0",
+  "description": "Tech of Web Development - Lab 9 (Auth + Docker + SQLite)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "migrate": "node db/migrate.js",
+    "seed": "node db/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.3",
+    "express-session": "^1.18.2",
+    "sqlite3": "^5.1.7",
+    "dotenv": "^16.4.5"
+  }
+}
