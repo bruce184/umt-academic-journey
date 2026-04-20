@@ -1,52 +1,87 @@
-# UMT Learning Journey
+# UMT Academic Journey
 
-This repository is my academic learning journey and project portfolio at UMT.
+This repository documents my academic journey at UMT from Year 1 onward.
 
-It is organized with a layered semantic structure:
+It is both:
 
-- `year-*` folders provide the broad academic context.
-- `s**-*` folders provide semester timing.
-- `subjects/` folders group work by course.
-- `projects/` folders highlight larger deliverables.
+- a semester-by-semester record of what I learned
+- a portfolio of coursework, labs, and projects I built along the way
 
-The goal is to show, semester by semester, what I learned, what I built, and how my skills evolved from Year 1 onward.
+## Why This Repo Exists
 
-## Structure
+I wanted one main repository that shows:
+
+- what I studied each semester
+- what technical skills I picked up over time
+- what labs, assignments, and projects I completed
+- how my work evolved from foundations to larger software projects
+
+Instead of scattering school work across many small repositories, this repo is becoming the main long-term home for my university learning journey.
+
+## Organizing Principle
+
+The core mindset behind this repository is:
+
+> meaning should be layered
+
+That means the structure is intentionally semantic and hierarchical:
+
+- the `year-*` folder provides the academic context
+- the `s**-*` folder provides the semester context
+- the `subjects/` folder provides the course context
+- the `labs/`, `assignments/`, and `projects/` folders provide the concrete output
+
+Because meaning is distributed across levels, folder names can stay short without losing clarity.
+
+## Repository Structure
 
 ```text
-umt-learning-journey/
+umt-academic-journey/
 ├─ featured-projects/
 ├─ year-1-2023-2024/
+│  ├─ s01-fall23/
+│  ├─ s02-spr24/
+│  └─ s03-sum24/
 ├─ year-2-2024-2025/
+│  ├─ s04-fall24/
+│  ├─ s05-spr25/
+│  └─ s06-sum25/
 ├─ year-3-2025-2026/
+│  ├─ s07-fall25/
+│  ├─ s08-spr26/
+│  └─ s09-sum26/
 ├─ assets/
 ├─ templates/
 └─ archive/
 ```
 
-## Timeline
+## Academic Timeline
 
-- `year-1-2023-2024`
-  - `s01-fall23`
-  - `s02-spr24`
-  - `s03-sum24`
-- `year-2-2024-2025`
-  - `s04-fall24`
-  - `s05-spr25`
-  - `s06-sum25`
-- `year-3-2025-2026`
-  - `s07-fall25`
-  - `s08-spr26`
-  - `s09-sum26`
+### Year 1 (2023-2024)
 
-## Migration Status
+- `s01-fall23`
+- `s02-spr24`
+- `s03-sum24`
 
-This repo is also becoming the main home for smaller GitHub repos that used to be scattered.
+### Year 2 (2024-2025)
 
-- `Helloworld1487` -> moved into `year-2-2024-2025/s06-sum25/subjects/intro-to-software-engineering/labs/helloworld1487`
-- `TechOfWebDev-LAB9` -> moved into `year-3-2025-2026/s07-fall25/subjects/tech-of-web/labs/lab9`
-- `AI-For-Beginners` -> tracked here as a referenced learning resource, not a primary in-repo codebase
-- `OCMS` -> tracked here as a featured project and pending final consolidation review
+- `s04-fall24`
+- `s05-spr25`
+- `s06-sum25`
+
+### Year 3 (2025-2026)
+
+- `s07-fall25`
+- `s08-spr26`
+- `s09-sum26`
+
+## What You Will Find Here
+
+- course summaries
+- labs and assignments
+- subject-based folders
+- selected featured projects
+- migration notes for older standalone repositories
 
 ## Featured Work
 
@@ -54,8 +89,35 @@ This repo is also becoming the main home for smaller GitHub repos that used to b
 - `featured-projects/ai-for-beginners`
 - `featured-projects/tech-of-web-lab9`
 
-## Maintenance Rules
+## Repository Consolidation
 
-- Keep only meaningful source, notes, screenshots, and summaries.
-- Do not commit `node_modules`, build artifacts, secrets, or submission ZIPs unless there is a specific archival reason.
-- Prefer concise course summaries over dumping raw third-party learning materials.
+This repository is also part of a cleanup effort to reduce scattered school repositories.
+
+### Already absorbed here
+
+- `Helloworld1487`
+  - now located under `year-2-2024-2025/s06-sum25/subjects/intro-to-software-engineering/labs/helloworld1487`
+- `TechOfWebDev-LAB9`
+  - now located under `year-3-2025-2026/s07-fall25/subjects/tech-of-web/labs/lab9`
+
+### Kept separate for now
+
+- `AI-For-Beginners`
+  - kept for later review because it is tied to upstream learning material
+- `OCMS`
+  - kept for later review because it is a larger standalone project
+- `bruce184/bruce184`
+  - kept separate because it is my GitHub profile repository
+
+## Curation Rules
+
+- Keep meaningful source, notes, screenshots, and summaries.
+- Do not commit `node_modules`, runtime databases, secrets, or unnecessary build artifacts.
+- Prefer structured summaries over dumping raw third-party learning materials.
+- Keep the repo readable enough that someone can understand my progress by browsing it from top to bottom.
+
+## Ongoing Goal
+
+This is a living repository.
+
+I will continue updating it as I move through later semesters, add more projects, refine older coursework, and eventually extend the structure into Year 4.
