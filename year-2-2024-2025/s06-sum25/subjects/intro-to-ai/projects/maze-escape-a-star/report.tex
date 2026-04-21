@@ -1,0 +1,517 @@
+\documentclass[a4paper,12pt]{article}
+
+%—— Packages —————————————————————————————
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}                    % improved fonts
+\usepackage[utf8]{inputenc} 
+\usepackage{xcolor}
+\usepackage{microtype}                  % better typography
+\usepackage{setspace}                   % line spacing
+\usepackage{titlesec}                   % customize titles
+\usepackage{enumitem}                   % control list spacing
+\usepackage{fancyhdr}                   % headers & footers
+\usepackage{listings}                   % code listings
+\usepackage{tcolorbox}                  % colored boxes
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tocloft}                    % toc customization
+\usepackage{float}                      % [H] placement
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
+\usepackage[backend=biber,style=apa,sorting=nyt,defernumbers=true]{biblatex}
+\addbibresource{references.bib}
+
+% Override APA style colors to make citations black and bold
+\DeclareFieldFormat{labelnumberwidth}{\textbf{#1}}
+\DeclareFieldFormat{cite}{\textbf{#1}}
+\DeclareFieldFormat{textcite}{\textbf{#1}}
+\DeclareFieldFormat{parencite}{\textbf{#1}}
+\DeclareFieldFormat{year}{\textbf{#1}}
+
+% Ensure proper APA formatting
+\DeclareLanguageMapping{english}{english-apa}
+
+\tcbuselibrary{breakable,skins}
+
+%—— Global defaults for tcolorbox —————————————
+\tcbset{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=gray!40,
+  boxrule=0.5pt,
+  arc=1pt,
+  left=5pt, right=5pt, top=5pt, bottom=5pt
+}
+
+%—— Table of Contents spacing ————————————————————
+\setlength{\cftbeforesecskip}{6pt}
+\setlength{\cftparskip}{2pt}
+\setlength{\cftsubsecskip}{4pt}
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+
+%—— Title formatting ————————————————————————
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+%—— Header / Footer ————————————————————————
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{Intelligent Escape Pathfinding in a Maze Game}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyfoot[L]{Nguyen Huy Hoang}
+\fancyfoot[R]{\thepage}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%—— Code listing style —————————————————————
+\definecolor{lsKeyword}{RGB}{0,0,180}
+\definecolor{lsComment}{RGB}{0,120,0}
+\definecolor{lsString}{RGB}{163,21,21}
+
+\lstdefinestyle{light}{
+  backgroundcolor=\color{white},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{lsKeyword}\bfseries,
+  commentstyle=\color{lsComment}\itshape,
+  stringstyle=\color{lsString},
+  numberstyle=\tiny\color{gray},
+  numbers=left,
+  stepnumber=1,
+  numbersep=8pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=fullflexible,
+  showstringspaces=false
+}
+\lstset{style=light,language=C++}
+
+\begin{document}
+\onehalfspacing  % 1.5 line spacing
+
+%—— Cover page —————————————————————————
+\begin{titlepage}
+  \thispagestyle{empty}
+  \vspace*{5cm}
+  \begin{center}
+    {\LARGE\bfseries Intelligent Escape Pathfinding in a Maze Game}\\[2em]
+    {\large\bfseries Full Name:} Nguyen Huy Hoang\\[0.5em]
+    {\large\bfseries Student ID:} 2302700016\\[0.5em]
+    {\large\bfseries Academic Year:} 2024--2025
+  \end{center}
+\end{titlepage}
+
+\newpage
+
+%—— Abstract —————————————————————————————
+\begin{abstract}
+This report presents an intelligent pathfinding solution for escaping a maze.
+We describe the problem statement, algorithm selection with heuristic optimization,
+and system architecture using multi-threading for real-time visualization.
+\end{abstract}
+
+\newpage
+
+%—— Table of Contents ————————————————————————
+\markboth{\contentsname}{}
+\tableofcontents
+\thispagestyle{fancy}
+
+\newpage
+
+%—— Main content —————————————————————————
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Project Overview}
+\textit{In this section is the overview of the project, including background, objectives, functional requirements, and the development environment.}
+
+\subsection*{Problem Description}
+You are given a maze as a 2D grid, where each cell is either an open space, a wall, a start point (S), or a goal point (G). Your task is to write a program that guides a character or robot along the shortest possible path from S to G, using a heuristic search algorithm (for example, A*). The algorithm should be designed for maximum efficiency and must output the final route.
+
+\subsection*{Suggestions}
+\begin{itemize}[noitemsep]
+  \item Represent the maze as a 2D grid, clearly marking traversable cells and obstacles.
+  \item Implement the A* algorithm with a heuristic—either Manhattan distance or Euclidean distance.
+  \item Present the resulting path either as a sequence of coordinates or by visually overlaying it on the maze.
+\end{itemize}
+
+\subsection*{Minimum Requirements (mandatory)}
+\begin{itemize}[noitemsep]
+  \item Read the maze as a 2D matrix (from a file or hard-coded character array) and identify the start point S and goal point G.
+  \item Use the A* algorithm to compute a path from S to G that minimizes the number of steps and never traverses walls.
+  \item Output the resulting path overlaid on the maze (e.g. by marking each step).
+  \item Gracefully handle cases where no path exists (e.g. print “No path found”).
+\end{itemize}
+
+\subsection*{Advanced Requirements (optional)}
+\begin{itemize}[noitemsep]
+  \item Support variable movement costs per cell, so that A* optimizes total cost rather than simply step count.
+  \item Handle a dynamic maze where obstacles can appear or disappear as the robot moves, requiring the algorithm to replan on the fly.
+  \item Compare the performance and optimality of different heuristics (e.g. Manhattan vs. Euclidean).
+  \item Provide a real-time visual interface that animates the search process step by step.
+  \item Extend the maze with additional gameplay elements, such as items to collect before reaching the goal.
+\end{itemize}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algorithm Development \& Design}
+\textit{In this section, we introduce the A\* pathfinding algorithm — the "brain" behind our maze-escape system and illustrate its operation with clear, step-by-step illustrations. Before settling on a concrete implementation, we’ll undertake a detailed study of how A\* behaves under two common heuristics—Manhattan distance and Euclidean distance; comparing their impact on search efficiency, path optimality, and computational cost. We can then choose the best solution that balances performance and accuracy for our game’s needs.}
+
+\subsection{A* Algorithm}
+A* algorithm is one of the best and popular technique used in path-finding and graph traversals \parencite{wiki:a-star,geeks:a-star}. What separates it from its peer algorithms, like Dijkstra's algorithm, is its incorporation of heuristics function to guide its search and output the best possible path from the start node or position to the final node.
+To be more technical, A* algorithm evaluates nodes by \textit{f(n) = g(n) + h(n)}, where: 
+\begin{itemize}
+    \item \textbf{g(n)}: the actual cost of the path from the starting node to node \textit{n}
+    \item \textbf{h(n)}: the heuristic (estimated) cost of the path from node \textit{n} to the goal node 
+\end{itemize}
+There are 2 setbacks of using this algorithm: 
+\begin{itemize}
+    \item The first one is its memory usage storing all the generated node in memory, which can be a problem in large-scale applications.
+    \item Secondly is the quality of the heuristic function. Bad heuristics can lead to sub-optimal results.
+\end{itemize}
+\textbf{In conclusion}, compared to its advantages, A* is still considered to be one of the best solutions for this problem.
+\vspace{1em}
+
+\subsection{Euclidean Distance}
+In mathematics, the Euclidean distance between 2 points in Euclidean space is the line segment between them, which can be calculated from the \textbf{Cartesian coordinates} of the points using \textbf{Pythagorean theorem} named after the ancient Greek mathematician Pythagoras \parencite{wiki:euclidean}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{image.png}
+    \caption{Euclidean Distance Visual}
+    \label{fig:euclidean-distance}
+\end{figure}
+
+When we are allowed to move in \textbf{any directions}, using this heuristics is advised.
+\vspace{1em}
+
+\subsection{Manhattan Distance}
+\textbf{Taxicab geometry} or \textbf{Manhattan geometry} is where the familiar \textbf{Euclidean distance is ignored}, meaning the distance between 2 points is instead defined to be the sum of the absolute differences of their respective Cartesian coordinates \parencite{wiki:manhattan}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{image2.png}
+    \caption{Manhattan Distance Visual}
+    \label{fig:manhattan-distance}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{image3.png}
+    \caption{Formal Manhattan Distance Definition}
+    \label{fig:manhattan-formula}
+\end{figure}
+
+When we are allowed to move in \textbf{only 4 directions}, using this heuristics is advised. 
+\vspace{1em}
+
+\subsection{Final Conclusion}
+Given the nature of the setting we are in, finding an escape in a maze, we will go with A* algorithm with Manhattan Distance heuristics. Details will be in Section 3 and Section 4.
+\vspace{1em}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algorithm Representation}
+\textit{In this section, you will the algorithm at play with manual visual aids}
+
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implementation Details}
+\textit{In this section, you will see the implementation steps of the project, organized into 2 main sub-sections: System Architecture and Source Code.}
+
+\subsection{System Architecture}
+\subsubsection{Generating a Maze with DFS}
+One of the easiest way to creating a maze, that we have research, is using \textbf{Depth-First-Search (DFS)} \parencite{wiki:maze-generation}. Specifically, we will combine DFS with \textbf{Backtracking} to explore all reachable cells in the maze while following constraints on upward and downward movements. By following this protocol, we can efficiently calculate the total count of unique cells that can be reach from a starting position.
+
+\begin{tcolorbox}[breakable, enhanced, colback=white, title={Main Functions}, colframe=gray!40]
+\begin{lstlisting}
+void dfs(int row, int col, int up, int down, vector<vector<char>> &mat, vector<vector<bool>> &visited) {
+            
+    int n = mat.size(), m = mat[0].size();        
+            
+    // Check if starting position is valid 
+    if(row < 0 || col < 0 || row >= n || col >= m || mat[row][col] == '#')
+        return;
+    
+    // Mark as visited
+    visited[row][col] = true;
+    
+    mat[row][col] = '#';
+    
+    // Explore in all 4 directions
+    if(up > 0) dfs(row-1, col, up-1, down, mat, visited);
+    if(down > 0) dfs(row+1, col, up, down-1, mat, visited);
+    dfs(row, col-1, up, down, mat, visited);
+    dfs(row, col+1, up, down, mat, visited);
+    
+    mat[row][col] = '.';
+}
+
+int CountCells(int row, int col, int up, int down, vector<vector<char>> &mat) {
+    int n = mat.size(), m = mat[0].size();
+    
+    vector<vector<bool>> visited(n, vector<bool>(m, false));
+    
+    // Check if starting position is valid
+    if(row < 0 || col < 0 || row >= n || col >= m || mat[row][col] == '#')
+        return 0;
+    
+    // Run DFS
+    dfs(row, col, up, down, mat, visited);
+    
+    // Return the result 
+    int ans = 0;
+    for (int i=0; i<n; i++) {
+        for (int j=0; j<m; j++) {
+            if (visited[i][j]) ans++;
+        }
+    }
+    
+    return ans;
+}
+
+int main() {
+    vector<vector<char>> mat = 
+      {{'.', '.', '.'},
+       {'.', '#', '.'},
+       {'#', '.', '.'}};
+       
+    int r = 1, c = 0;
+    int u = 1, d = 1;
+    
+    cout << CountCells(r, c, u, d, mat);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+\vspace{1em}
+
+\subsubsection{Developing the A* algorithm with Manhattan Distance heuristics}
+\begin{tcolorbox}[breakable, enhanced, colback=white, title={Main Functions}, colframe=gray!40]
+\begin{lstlisting}
+ll manhattan (ll u, ll goal, ll N){
+    ll ux = u / N, uy = u % N;
+    ll gx = goal / N, gy = goal % N;
+    return abs(ux - gx) + abs(uy - gy); 
+}
+
+vector <ll> as (ll n, ll start, const vector<vector<pair<ll,ll>>> &adj, vector<ll> &parent, ll N){
+    vector<ll> g(n, INF);
+    ll goal = n - 1; 
+    parent.assign(n, -1);
+
+    priority_queue < pair<ll, ll>, vector<pair<ll, ll>>, greater<>> pq; 
+
+    g[start] = 0; 
+    pq.push( {g[start] + manhattan(start, goal, N), start} );   
+
+    while (!pq.empty()){ 
+        ll f = pq.top().first; 
+        ll u = pq.top().second;
+        pq.pop();  
+
+        if (f - manhattan(start, goal, N) > g[u]) continue;
+
+        if (u == goal) break; 
+
+        for (auto cur : adj[u]){
+            ll v = cur.first;
+            ll w = cur.second; 
+            ll tmp_g = g[u] + w;  
+
+            if (tmp_g < g[v]){
+                g[v] = tmp_g; 
+                parent[v] = u;
+                pq.push({g[v] + manhattan(v, goal, N), v});
+            }
+        }
+    }
+    return g; 
+}
+\end{lstlisting}
+\end{tcolorbox}
+\vspace{1em}
+
+\subsection{Source Code}
+\begin{tcolorbox}[breakable, enhanced, colback=white, title={Complete Version}, colframe=gray!40]
+\begin{lstlisting}
+#include <iostream> 
+#include <vector>
+#include <queue> 
+#include <cmath>
+#include <algorithm> // for shuffle
+#include <ctime>     // for srand, time
+#include <random>    // for shuffle
+using namespace std;
+
+#define ll long long
+#define endl "\n"
+#define INF 1e9
+
+// Manhattan Distance heuristic
+ll manhattan(ll u, ll goal, ll N) {
+    ll ux = u / N, uy = u % N;
+    ll gx = goal / N, gy = goal % N;
+    return abs(ux - gx) + abs(uy - gy); 
+}
+
+// A* Algorithm
+vector<ll> as(ll n, ll start, const vector<vector<pair<ll,ll>>> &adj, vector<ll> &parent, ll N) {
+    vector<ll> g(n, INF);
+    ll goal = n - 1; 
+    parent.assign(n, -1);
+
+    priority_queue <pair<ll, ll>, vector<pair<ll, ll>>, greater<>> pq; 
+
+    g[start] = 0; 
+    pq.push({g[start] + manhattan(start, goal, N), start});   
+
+    while (!pq.empty()) { 
+        ll f = pq.top().first; 
+        ll u = pq.top().second;
+        pq.pop();  
+
+        if (f - manhattan(u, goal, N) > g[u]) continue;
+        if (u == goal) break; 
+
+        for (const auto &cur : adj[u]) {
+            ll v = cur.first;
+            ll w = cur.second; 
+            ll tmp_g = g[u] + w;  
+
+            if (tmp_g < g[v]) {
+                g[v] = tmp_g; 
+                parent[v] = u;
+                pq.push({g[v] + manhattan(v, goal, N), v});
+            }
+        }
+    }
+    return g; 
+}
+
+int dx[] = {-1, 1, 0, 0}; 
+int dy[] = {0, 0, -1, 1};
+
+bool isValid(int x, int y, int N) {
+    return x >= 0 && y >= 0 && x < N && y < N;
+}
+
+// Convert grid (x, y) to node ID
+int nodeID(int x, int y, int N) {
+    return x * N + y;
+}
+
+void buildMazeDFS(int x, int y, int N, vector<vector<char>> &maze, vector<vector<bool>> &visited) {
+    visited[x][y] = true;
+    maze[x][y] = '.';
+
+    vector<int> dir = {0, 1, 2, 3};
+    shuffle(dir.begin(), dir.end(), default_random_engine(rand()));
+
+    for (int i : dir) {
+        int nx = x + dx[i]*2;
+        int ny = y + dy[i]*2;
+
+        if (isValid(nx, ny, N) && !visited[nx][ny]) {
+            // Open wall between current and next
+            maze[x + dx[i]][y + dy[i]] = '.';
+            buildMazeDFS(nx, ny, N, maze, visited);
+        }
+    }
+}
+
+int main() {
+    srand(time(0)); // Different seed each run
+
+    int N;
+    cout << "Enter maze size N (odd number >= 3): "; 
+    cin >> N;
+
+    if (N < 3 || N % 2 == 0) {
+        cout << "Invalid. Use odd number >= 3.\n";
+        return 0;
+    }
+
+    vector<vector<char>> maze(N, vector<char>(N, '#'));
+    vector<vector<bool>> visited(N, vector<bool>(N, false));
+
+    buildMazeDFS(1, 1, N, maze, visited);
+    maze[0][1] = '.';               // Start point
+    maze[N-1][N-2] = '.';           // End point
+
+    cout << "\nGenerated Maze:\n";
+    for (const auto &row : maze) {
+        for (char c : row) cout << c << ' ';
+        cout << endl;
+    }
+
+    // Build graph from maze
+    int totalNodes = N * N;
+    vector<vector<pair<ll,ll>>> adj(totalNodes);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            if (maze[i][j] == '.') {
+                int u = nodeID(i, j, N);
+                for (int d = 0; d < 4; d++) {
+                    int ni = i + dx[d];
+                    int nj = j + dy[d];
+                    if (isValid(ni, nj, N) && maze[ni][nj] == '.') {
+                        int v = nodeID(ni, nj, N);
+                        adj[u].push_back({v, 1});
+                    }
+                }
+            }
+        }
+    }
+
+    ll start = nodeID(0, 1, N);         
+    ll goal = nodeID(N - 1, N - 2, N);  
+    vector<ll> parent(totalNodes, -1);
+
+    vector<ll> dist = as(totalNodes, start, adj, parent, N);
+
+    // Show result path
+    if (dist[goal] == INF) {
+        cout << "\nNo path found.\n";
+    } else {
+        cout << "\nPath length = " << dist[goal] << endl;
+        vector<ll> path;
+        for (ll cur = goal; cur != -1; cur = parent[cur]) {
+            path.push_back(cur);
+        }
+        reverse(path.begin(), path.end());
+
+        // Mark path on maze
+        for (ll id : path) {
+            int x = id / N;
+            int y = id % N;
+            maze[x][y] = '*';
+        }
+
+        cout << "\nPath in maze:\n";
+        for (const auto &row : maze) {
+            for (char c : row) cout << c << ' ';
+            cout << endl;
+        }
+    }
+
+    return 0;
+}
+
+\end{lstlisting}
+\end{tcolorbox}
+
+\printbibliography[title=References]
+
+\end{document}

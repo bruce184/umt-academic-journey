@@ -1,0 +1,36 @@
+List of edges with their vertices:
+Edge 1: (0, 1)
+Edge 2: (1, 2)
+Edge 3: (2, 0)
+List of edges with their vertices and color:
+Edge 1: (0, 1) - Color: 0
+Edge 2: (1, 2) - Color: 1
+Edge 3: (2, 0) - Color: 2
+Total colors used: 3
+
+List of edges with their vertices:
+Edge 1: (0, 1)
+Edge 2: (1, 2)
+Edge 3: (2, 3)
+Edge 4: (3, 0)
+List of edges with their vertices and color:
+Edge 1: (0, 1) - Color: 0
+Edge 2: (1, 2) - Color: 1
+Edge 3: (2, 3) - Color: 0
+Edge 4: (3, 0) - Color: 1
+Total colors used: 2
+
+List of edges with their vertices:
+Edge 1: (0, 1)
+Edge 2: (0, 2)
+Edge 3: (0, 3)
+Edge 4: (0, 4)
+Edge 5: (1, 2)
+List of edges with their vertices and color:
+Edge 1: (0, 1) - Color: 0
+Edge 2: (0, 2) - Color: 1
+Edge 3: (0, 3) - Color: 2
+Edge 4: (0, 4) - Color: 3
+Edge 5: (1, 2) - Color: 2
+Total colors used: 4
+
