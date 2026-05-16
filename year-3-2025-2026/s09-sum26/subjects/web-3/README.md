@@ -27,18 +27,14 @@ The first lab is a Node.js GraphQL service with:
 - DataLoader for relationship loading
 - Docker and Docker Compose setup files
 
-Main local entry points:
+Repo copy:
 
-- `server.js`
-- `schema.js`
-- `resolvers.js`
-- `auth.js`
-- `loaders.js`
-- `db/`
-- `package.json`
+- `labs/week01-graphql/`
+
+The repo copy includes source, package files, Docker files, migrations, sanitized seed data, sanitized request examples, `.gitignore`, `.env.example`, and lab notes.
 
 ## Curation Notes
 
-Keep source, schema, migrations, seeds, request examples, and concise notes when this lab is migrated into the repo. Do not commit `node_modules/`, `.env`, database runtime files, or local containers/build artifacts.
+The uploaded lab intentionally excludes `node_modules/`, `.env`, `.env.docker`, real JWT/session data, database runtime files, local containers, and build artifacts.
 
 The local folder also contains a separate Java backend learning repository. It is useful supporting study material, but should stay separate unless intentionally consolidated later.
