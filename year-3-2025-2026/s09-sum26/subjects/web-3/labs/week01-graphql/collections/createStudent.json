@@ -1,0 +1,10 @@
+{
+  "query": "mutation CreateStudent($input: CreateStudentInput!) { createStudent(input: $input) { id name email } }",
+  "variables": {
+    "input": {
+      "name": "Tran Binh",
+      "email": "binh@example.com",
+      "password": "<set-local-password-before-request>"
+    }
+  }
+}

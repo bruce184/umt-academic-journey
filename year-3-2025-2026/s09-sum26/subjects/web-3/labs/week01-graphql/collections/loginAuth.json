@@ -1,0 +1,7 @@
+{
+  "query": "mutation Login($email: String!, $password: String!) { login(email: $email, password: $password) { token student { id name email } } }",
+  "variables": {
+    "email": "an@example.com",
+    "password": "<set-local-password-before-request>"
+  }
+}

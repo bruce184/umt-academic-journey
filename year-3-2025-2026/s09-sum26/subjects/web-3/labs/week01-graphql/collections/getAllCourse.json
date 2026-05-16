@@ -1,0 +1,10 @@
+{
+  "query": "query CoursesPage($limit: Int, $offset: Int) { coursesPage(limit: $limit, offset: $offset) { items { id title description studentCount students { id name } } pageInfo { total limit offset hasNextPage hasPrevPage } } }",
+  "variables": {
+    "limit": 10,
+    "offset": 0
+  },
+  "headers": {
+    "Authorization": "Bearer <local-jwt-token>"
+  }
+}

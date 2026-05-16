@@ -1,0 +1,9 @@
+{
+  "query": "mutation UnenrollCourse($courseId: ID!) { unenrollCourse(courseId: $courseId) { id title studentCount } }",
+  "variables": {
+    "courseId": "1"
+  },
+  "headers": {
+    "Authorization": "Bearer <local-jwt-token>"
+  }
+}

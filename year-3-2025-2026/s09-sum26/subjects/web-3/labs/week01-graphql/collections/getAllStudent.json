@@ -1,0 +1,10 @@
+{
+  "query": "query StudentsPage($limit: Int, $offset: Int) { studentsPage(limit: $limit, offset: $offset) { items { id name email } pageInfo { total limit offset hasNextPage hasPrevPage } } }",
+  "variables": {
+    "limit": 10,
+    "offset": 0
+  },
+  "headers": {
+    "Authorization": "Bearer <local-jwt-token>"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "query": "mutation CreateCourse($input: CreateCourseInput!) { createCourse(input: $input) { id title description } }",
+  "variables": {
+    "input": {
+      "title": "Node.js Advanced",
+      "description": "Backend course using Node.js"
+    }
+  }
+}

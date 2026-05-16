@@ -1,0 +1,21 @@
+{
+  "students": [
+    {
+      "name": "Nguyen An",
+      "email": "an@example.com",
+      "password": "<set-local-password-before-seeding>"
+    }
+  ],
+  "courses": [
+    {
+      "title": "Web Software Development",
+      "description": "Practice REST, GraphQL, and web application development"
+    }
+  ],
+  "enrollments": [
+    {
+      "studentEmail": "an@example.com",
+      "courseTitle": "Web Software Development"
+    }
+  ]
+}
