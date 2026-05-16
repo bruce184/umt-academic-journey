@@ -37,22 +37,22 @@ Because meaning is distributed across levels, folder names can stay short withou
 
 ```text
 umt-academic-journey/
-├─ featured-projects/
-├─ year-1-2023-2024/
-│  ├─ s01-fall23/
-│  ├─ s02-spr24/
-│  └─ s03-sum24/
-├─ year-2-2024-2025/
-│  ├─ s04-fall24/
-│  ├─ s05-spr25/
-│  └─ s06-sum25/
-├─ year-3-2025-2026/
-│  ├─ s07-fall25/
-│  ├─ s08-spr26/
-│  └─ s09-sum26/
-├─ assets/
-├─ templates/
-└─ archive/
+|-- featured-projects/
+|-- year-1-2023-2024/
+|   |-- s01-fall23/
+|   |-- s02-spr24/
+|   `-- s03-sum24/
+|-- year-2-2024-2025/
+|   |-- s04-fall24/
+|   |-- s05-spr25/
+|   `-- s06-sum25/
+|-- year-3-2025-2026/
+|   |-- s07-fall25/
+|   |-- s08-spr26/
+|   `-- s09-sum26/
+|-- assets/
+|-- templates/
+`-- archive/
 ```
 
 ## Academic Timeline
@@ -73,7 +73,7 @@ umt-academic-journey/
 
 - `s07-fall25`
 - `s08-spr26`
-- `s09-sum26`
+- `s09-sum26` - active: Web 3, Mobile 3, Intro to Software Testing, and Combinatorics and Graph Theory
 
 ## What You Will Find Here
 
@@ -108,6 +108,10 @@ This repository is also part of a cleanup effort to reduce scattered school repo
   - kept for later review because it is tied to upstream learning material
 - `OCMS`
   - kept for later review because it is a larger standalone project
+- `dart-flutter-learning-journey`
+  - kept separate for now because it is a long-form Mobile 3 self-study track
+- `java-backend-learning-journey`
+  - kept separate for now because it is a long-form backend/Web 3 self-study track
 - `bruce184/bruce184`
   - kept separate because it is my GitHub profile repository
 
