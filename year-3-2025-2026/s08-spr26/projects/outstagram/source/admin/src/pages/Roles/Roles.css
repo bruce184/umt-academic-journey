@@ -1,0 +1,35 @@
+.roles-select {
+    width: 160px;
+}
+
+.roles-filters {
+    justify-content: flex-end;
+}
+
+.roles-search {
+    width: 260px;
+}
+
+.roles-filter-select {
+    width: 170px;
+}
+
+.roles-locked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 18px;
+    background: #f8fbff;
+    color: #64748b;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .roles-filters,
+    .roles-search,
+    .roles-filter-select {
+        width: 100%;
+    }
+}

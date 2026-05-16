@@ -1,0 +1,81 @@
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <div class="d-flex align-items-center gap-2">
+    <h3 class="m-0">Courses</h3>
+    <a class="btn btn-success btn-sm" href="/courses/create">+ Add course</a>
+  </div>
+
+  <form class="d-flex gap-2" method="GET" action="/courses">
+    <select class="form-select" name="instructor_id" style="min-width: 260px;">
+      <option value="">All instructors</option>
+      {{#each instructors}}
+        <option value="{{this.instructor_id}}" {{#if (eq ../selectedInstructorId this.instructor_id)}}selected{{/if}}>
+          {{this.name}}
+        </option>
+      {{/each}}
+    </select>
+    <button class="btn btn-primary" type="submit">Filter</button>
+  </form>
+</div>
+
+<div class="row g-3">
+  {{#each courses}}
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100">
+        {{#if image_url}}
+          <img src="{{image_url}}" class="card-img-top" alt="course image">
+        {{/if}}
+        <div class="card-body">
+          <h5 class="card-title">{{title}}</h5>
+          <div class="text-muted small mb-2">{{instructor_name}} • {{level}}</div>
+
+          <div class="mb-2">
+            <span class="fw-semibold">{{rating}}</span>
+            <span class="text-muted">({{total_reviews}} reviews)</span>
+          </div>
+
+          <div class="small text-muted mb-2">
+            {{total_hours}} hours • {{total_lectures}} lectures
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between">
+            <div>
+              <span class="fw-bold">${{current_price}}</span>
+              <span class="text-muted text-decoration-line-through ms-1">${{original_price}}</span>
+            </div>
+            {{#if is_bestseller}}
+              <span class="badge text-bg-warning">Bestseller</span>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+<hr class="my-4">
+
+<nav>
+  <ul class="pagination justify-content-center">
+    {{#if pagination.hasPrev}}
+      <li class="page-item">
+        <a class="page-link" href="/courses?instructor_id={{selectedInstructorId}}&page={{subtract pagination.page 1}}">Prev</a>
+      </li>
+    {{else}}
+      <li class="page-item disabled"><span class="page-link">Prev</span></li>
+    {{/if}}
+
+    {{#each pages}}
+      <li class="page-item {{#if (eq ../pagination.page this)}}active{{/if}}">
+        <a class="page-link" href="/courses?instructor_id={{../selectedInstructorId}}&page={{this}}">{{this}}</a>
+      </li>
+    {{/each}}
+
+    {{#if pagination.hasNext}}
+      <li class="page-item">
+        <a class="page-link" href="/courses?instructor_id={{selectedInstructorId}}&page={{add pagination.page 1}}">Next</a>
+      </li>
+    {{else}}
+      <li class="page-item disabled"><span class="page-link">Next</span></li>
+    {{/if}}
+  </ul>
+</nav>

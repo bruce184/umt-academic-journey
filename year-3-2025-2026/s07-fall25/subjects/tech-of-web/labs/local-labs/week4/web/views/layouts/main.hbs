@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+              crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row mt-2 mx-1">{{> nav}}</div>
+            <div class="row mt-2 mx-1">
+                <div class="col-12 col-sm-2 bg-warning bg-gradient bg-opacity-25 rounded p-3">{{> side}}</div>
+                <div class="col-12 col-sm-10 bg-primary bg-gradient bg-opacity-25 rounded p-3">{{{ body }}}</div>
+            </div>
+            <div class="row mt-2 mx-1">{{> footer}}</div>
+        </div>
+    </body>
+</html>

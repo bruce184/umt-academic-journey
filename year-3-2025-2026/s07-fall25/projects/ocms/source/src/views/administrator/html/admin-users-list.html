@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Danh sách Người dùng - OCMS Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/admin-styles.css" />
+  </head>
+  <body class="flex h-screen overflow-hidden">
+    <!-- Sidebar (reuse admin style) -->
+    <aside id="sidebar" class="sidebar w-64 text-white p-4 flex flex-col justify-between" style="background-color:var(--color-primary)">
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <a href="admin-dashboard.html" id="sidebarLogo" class="flex items-center space-x-2">
+            <img src="../../../images/logo.png" alt="Logo" class="h-10 w-auto bg-white p-1 rounded-md shadow-md" />
+            <span id="sidebarLogoText" class="sidebar-text font-bold text-lg">OCMS Admin</span>
+          </a>
+          <a href="admin-dashboard.html" id="sidebarLogoSmall" class="hidden">
+            <img src="../../../images/logo.png" alt="Logo" class="h-10 w-auto bg-white p-1 rounded-md shadow-md" />
+          </a>
+          <button id="toggleSidebar" class="text-white">☰</button>
+        </div>
+        <nav class="space-y-2">
+          <a href="admin-dashboard.html" class="sidebar-item flex items-center space-x-3 p-3">Dashboard</a>
+          <a href="admin-users.html" class="sidebar-item flex items-center space-x-3 p-3">Quản lý Người dùng</a>
+          <a href="admin-users-list.html" class="sidebar-item active flex items-center space-x-3 p-3">Danh sách Người dùng</a>
+        </nav>
+      </div>
+      <div class="border-t border-gray-700 pt-4">
+        <a href="/logout" class="sidebar-item flex items-center space-x-3 p-3">Đăng xuất</a>
+      </div>
+    </aside>
+
+    <main class="flex-1 bg-gray-50 overflow-auto">
+      <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div>
+          <span class="text-gray-500">Admin /</span>
+          <span class="font-semibold text-gray-800">Danh sách Người dùng</span>
+        </div>
+      </header>
+
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h1 class="text-2xl font-bold">Danh sách Người dùng</h1>
+          <button id="openModalBtn" class="bg-blue-600 text-white px-4 py-2 rounded">Thêm Người dùng</button>
+        </div>
+
+        <div class="bg-white rounded shadow p-4">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">Tên</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">Email</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">Vai trò</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody" class="bg-white divide-y divide-gray-200">
+              <!-- Rows inserted by admin-users-list.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal (hidden by default) -->
+    <div id="userModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg w-11/12 md:w-1/2 p-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3 id="modalTitle" class="text-lg font-semibold">Thêm Người dùng</h3>
+          <button id="closeModalBtn" class="text-gray-600">✕</button>
+        </div>
+        <form id="userForm">
+          <input type="hidden" id="userEditId" />
+          <div class="mb-2">
+            <label class="block text-sm">Tên</label>
+            <input id="userName" class="w-full border p-2 rounded" />
+          </div>
+          <div class="mb-2">
+            <label class="block text-sm">Email</label>
+            <input id="userEmail" class="w-full border p-2 rounded" />
+          </div>
+          <div class="mb-2">
+            <label class="block text-sm">Vai trò</label>
+            <select id="userRole" class="w-full border p-2 rounded">
+              <option>Student</option>
+              <option>Lecturer</option>
+              <option>Department Head</option>
+              <option>Administrator</option>
+            </select>
+          </div>
+          <div id="passwordSection" class="mb-2">
+            <label class="block text-sm">Mật khẩu</label>
+            <input id="userPassword" type="password" class="w-full border p-2 rounded" />
+          </div>
+          <div class="flex justify-end gap-2 mt-4">
+            <button id="cancelModalBtn" type="button" class="px-4 py-2 rounded border">Hủy</button>
+            <button id="saveUserBtn" type="button" class="px-4 py-2 rounded bg-blue-600 text-white">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Services and page scripts -->
+    <script src="../js/user-service.js"></script>
+    <script type="module" src="../js/admin-users-list.js"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f8f9fa; /* Nền xám nhạt cho khu vực chính */
+}
+
+/* Giữ lại style cho sidebar item để có hiệu ứng hover */
+.sidebar-item {
+  color: rgba(255, 255, 255, 0.9);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  border-radius: 6px;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+  background-color: #005aa3; /* Màu xanh của header khi hover */
+  color: white;
+}
+
+.sidebar-item.active {
+  font-weight: 600;
+}
+
+/* Tùy chỉnh thanh cuộn */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}

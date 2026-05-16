@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý Người dùng - OCMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/admin-styles.css" />
+
+    <style>
+      :root {
+        --color-primary: #333333;
+        --color-primary-dark: #1f2933;
+        --color-accent: #4ade80;
+        --color-sidebar-text: rgba(255, 255, 255, 0.85);
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background-color: #f3f4f6;
+      }
+      .sidebar {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-primary-dark)
+        );
+      }
+      .sidebar-item {
+        color: rgba(255, 255, 255, 0.8);
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
+      }
+      .sidebar-item:hover,
+      .sidebar-item.active {
+        background-color: var(--color-primary-dark);
+        color: white;
+        border-radius: 8px;
+      }
+      .sidebar-item.active {
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      #sidebarLogoSmall {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="flex h-screen overflow-hidden">
+    <aside
+      id="sidebar"
+      class="sidebar w-64 text-white p-4 flex flex-col justify-between"
+      style="background-color: var(--color-primary)"
+    >
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <a
+            href="admin-dashboard.html"
+            id="sidebarLogo"
+            class="flex items-center space-x-2"
+          >
+            <img
+              src="../../../images/logo.png"
+              alt="Logo"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+            <span id="sidebarLogoText" class="sidebar-text font-bold text-lg"
+              >OCMS Admin</span
+            >
+          </a>
+          <a href="admin-dashboard.html" id="sidebarLogoSmall" class="hidden">
+            <img
+              src="../../../images/logo.png"
+              alt="Logo"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+          </a>
+          <button id="toggleSidebar" class="text-white">
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <nav class="space-y-2">
+          <a
+            href="admin-dashboard.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M3 12L12 3l9 9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9 21V12h6v9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="sidebar-text">Dashboard</span>
+          </a>
+
+          <a
+            href="admin-courses.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 005.5 16c1.255 0 2.443-.29 3.5-.804v-10z"
+              />
+              <path
+                d="M9 4.804A7.968 7.968 0 0112.5 4c1.255 0 2.443.29 3.5.804v10A7.968 7.968 0 0112.5 16c-1.255 0-2.443-.29-3.5-.804v-10z"
+              />
+            </svg>
+            <span class="sidebar-text">Quản lý Học vụ</span>
+          </a>
+
+          <a
+            href="admin-financial.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M4 4a2 2 0 00-2 2v3h2.5a1.5 1.5 0 010 3H2v2a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4z"
+              />
+            </svg>
+            <span class="sidebar-text">Quản lý Tài chính</span>
+          </a>
+
+          <a
+            href="admin-users.html"
+            class="sidebar-item active flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM4 15a4 4 0 018 0v1H4v-1z"
+              />
+              <path
+                d="M15.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM14 15a3 3 0 016 0v1h-6v-1z"
+              />
+            </svg>
+            <span class="sidebar-text">Quản lý Người dùng</span>
+          </a>
+
+          <a
+            href="admin-reports.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-7.586a1 1 0 00-.293-.707l-3.414-3.414A1 1 0 0012.586 3H5zm5 7a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 10-2 0v6a1 1 0 102 0V7zm2 4a1 1 0 10-2 0v2a1 1 0 102 0v-2z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">Báo cáo & Giám sát</span>
+          </a>
+
+          <a
+            href="admin-settings.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.89 3.31.876 2.42 2.42a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.89 1.543-.876 3.31-2.42 2.42a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.89-3.31-.876-2.42-2.42a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.89-1.543.876-3.31 2.42-2.42a1.724 1.724 0 002.573-1.066zM12 15a3 3 0 100-6 3 3 0 000 6z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">Cấu hình Hệ thống</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="border-t border-gray-700 pt-4">
+        <a
+          href="../../../index/index.html"
+          class="sidebar-item flex items-center space-x-3 p-3"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm12.293 3.293a1 1 0 011.414 1.414L14.414 11H7a1 1 0 000 2h7.586l-2.707 2.707a1 1 0 101.414 1.414l4.414-4.414a1 1 0 000-1.414l-4.414-4.414a1 1 0 00-1.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span class="sidebar-text">Quay lại Portal</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="flex-1 bg-gray-50 overflow-auto">
+      <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div>
+          <span class="text-gray-500">Admin /</span>
+          <span class="font-semibold text-gray-800">Quản lý Người dùng</span>
+        </div>
+        <div class="relative">
+          <button
+            id="avatarButton"
+            class="flex items-center space-x-2 focus:outline-none p-2 rounded-full hover:bg-gray-100"
+          >
+            <img
+              class="h-10 w-10 rounded-full object-cover shadow bg-gray-300"
+              src="https://placehold.co/100x100/333333/FFFFFF?text=QTV"
+              alt="Avatar"
+            />
+            <div class="text-left hidden md:block">
+              <div class="font-semibold text-gray-700 text-sm">
+                Quản trị viên
+              </div>
+              <div class="text-xs text-gray-500">administrator@umt.edu.vn</div>
+            </div>
+          </button>
+          <div
+            id="avatarDropdown"
+            class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl overflow-hidden z-20 hidden"
+          >
+            <a
+              href="../../../index/index.html"
+              class="block px-4 py-3 text-red-600 font-medium hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
+            >
+              Đăng xuất
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <div class="p-6 space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <h1 class="text-2xl font-bold text-gray-900">
+              Quản lý Người dùng
+            </h1>
+            <p class="text-sm text-gray-600">
+              Tổng quan các chức năng quản trị người dùng trong hệ thống OCMS.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+              Vai trò: Super Admin
+            </span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div
+            class="admin-card bg-white p-6 rounded-lg shadow-md border border-gray-200"
+          >
+            <div class="admin-card-header">Danh sách Tài khoản</div>
+            <div class="admin-card-body">
+              <p class="text-sm text-gray-600 mb-3">
+                Xem, tìm kiếm và quản lý tất cả tài khoản trong hệ thống.
+              </p>
+              <a href="admin-users-list.html" class="admin-action-link">
+                (1) Danh sách Người dùng
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="admin-card bg-white p-6 rounded-lg shadow-md border border-gray-200"
+          >
+            <div class="admin-card-header">Quyền & Vai trò</div>
+            <div class="admin-card-body">
+              <p class="text-sm text-gray-600 mb-3">
+                Định nghĩa và gán các quyền truy cập cho từng nhóm người dùng.
+              </p>
+              <a href="admin-users-roles.html" class="admin-action-link">
+                (12) Quản lý Vai trò & Phân quyền (Roles)
+              </a>
+              <a href="admin-users-policy.html" class="admin-action-link">
+                (2) Cấu hình Chính sách Hồ sơ
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="admin-card bg-white p-6 rounded-lg shadow-md border border-gray-200"
+          >
+            <div class="admin-card-header">Cấu hình Bảo mật & Xác thực</div>
+            <div class="admin-card-body">
+              <p class="text-sm text-gray-600 mb-3">
+                Thiết lập chính sách mật khẩu, đăng nhập và xác thực đa yếu tố.
+              </p>
+              <a href="admin-users-auth.html" class="admin-action-link">
+                (1) Cấu hình Xác thực & Bảo mật
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="../js/admin-users.js"></script>
+  </body>
+</html>

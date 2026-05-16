@@ -1,0 +1,31 @@
+.audit-filter {
+    width: 240px;
+}
+
+.audit-action-code {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 10px;
+    background-color: #f8fbff;
+    border: 1px solid #dbe7f4;
+    color: #0f172a;
+}
+
+.audit-metadata {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: #f8fbff;
+    border: 1px solid #e5edf7;
+    font-size: 11px;
+    line-height: 1.55;
+    max-height: 140px;
+    overflow: auto;
+}
+
+@media (max-width: 768px) {
+    .audit-filter {
+        width: 100%;
+    }
+}

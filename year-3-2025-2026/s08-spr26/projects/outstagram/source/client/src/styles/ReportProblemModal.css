@@ -1,0 +1,162 @@
+.report-problem-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 12, 0.72);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    z-index: 380;
+}
+
+.report-problem-modal {
+    width: min(560px, 100%);
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-main);
+    overflow: hidden;
+}
+
+.report-problem-header {
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+}
+
+.report-problem-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.report-problem-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: var(--shell-muted);
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.report-problem-body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.report-problem-body--center {
+    text-align: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.report-problem-success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.12);
+    color: #22c55e;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+.report-problem-body h3 {
+    margin: 8px 0 0;
+}
+
+.report-problem-body p {
+    margin: 0;
+    color: var(--text-secondary);
+    max-width: 420px;
+}
+
+.report-problem-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.report-problem-field label {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.report-problem-select,
+.report-problem-field textarea {
+    width: 100%;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--surface-soft) 90%, transparent);
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    color: var(--text-main);
+    font: inherit;
+    resize: vertical;
+}
+
+.report-problem-field textarea:focus,
+.report-problem-select:focus {
+    outline: 2px solid var(--focus-ring);
+}
+
+.report-problem-hint {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.report-problem-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.report-problem-button {
+    min-height: 44px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background: linear-gradient(180deg, #1b76ff 0%, #1554f6 100%);
+    color: #fff;
+    font-weight: 800;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(21, 84, 246, 0.25);
+}
+
+.report-problem-button--ghost {
+    background: var(--shell-muted);
+    color: var(--text-main);
+    border-color: var(--border);
+    box-shadow: none;
+}
+
+.report-problem-button:disabled {
+    opacity: 0.7;
+    cursor: default;
+    box-shadow: none;
+}
+
+@media (max-width: 640px) {
+    .report-problem-modal {
+        border-radius: 18px;
+    }
+}

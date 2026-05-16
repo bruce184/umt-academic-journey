@@ -81,6 +81,7 @@ umt-academic-journey/
 - labs and assignments
 - subject-based folders
 - selected featured projects
+- curated source imported from the local `1.SUBJECTS` archive
 - migration notes for older standalone repositories
 
 ## Featured Work
@@ -109,9 +110,9 @@ This repository is also part of a cleanup effort to reduce scattered school repo
 - `OCMS`
   - kept for later review because it is a larger standalone project
 - `dart-flutter-learning-journey`
-  - kept separate for now because it is a long-form Mobile 3 self-study track
+  - curated learning-track source is now mirrored under `year-3-2025-2026/s09-sum26/subjects/mobile-3/learning-tracks/flutter`; the standalone repo can remain as the long-form original
 - `java-backend-learning-journey`
-  - kept separate for now because it is a long-form backend/Web 3 self-study track
+  - curated learning-track source is now mirrored under `year-3-2025-2026/s09-sum26/subjects/web-3/learning-tracks/java-backend`; the standalone repo can remain as the long-form original
 - `bruce184/bruce184`
   - kept separate because it is my GitHub profile repository
 

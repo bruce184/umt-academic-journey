@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding ="UTF-8"?>
+
+<ThuVien>
+    <DauSachs>
+        <DauSach maDS="DS001" theLoai="Khoa hoc">
+            <TacGia> 01 </TacGia>
+            <NamXuatBan> 2020 </NamXuatBan>
+            <NhaXuatBan> NXB Tre </NhaXuatBan>
+            <DanhSachCuonSach>
+                <CuonSach maCS="DS001-1">
+                    <TinhTrang> Tot </TinhTrang>
+                </CuonSach>
+
+                <CuonSach maCS="DS001-2">
+                    <TinhTrang> Xau </TinhTrang>
+                </CuonSach>
+            </DanhSachCuonSach>
+        <DauSach>
+
+        <DauSach maDS="DS002" theLoai="Khoa hoc">
+            <TacGia> 02 </TacGia>
+            <NamXuatBan> 2020 </NamXuatBan>
+            <NhaXuatBan> NXB Tre </NhaXuatBan>
+            <DanhSachCuonSach>
+                <CuonSach maCS="DS002-1">
+                    <TinhTrang> Tot </TinhTrang>
+                </CuonSach>
+
+                <CuonSach maCS="DS002-2">
+                    <TinhTrang> Xau </TinhTrang>
+                </CuonSach>
+            </DanhSachCuonSach>
+        <DauSach>
+
+        <DauSach maDS="DS003" theLoai="Van hoc">
+            <TacGia> 03 </TacGia>
+            <NamXuatBan> 2020 </NamXuatBan>
+            <NhaXuatBan> NXB Tre </NhaXuatBan>
+            <DanhSachCuonSach>
+                <CuonSach maCS="DS003-1">
+                    <TinhTrang> Tot </TinhTrang>
+                </CuonSach>
+
+                <CuonSach maCS="DS003-2">
+                    <TinhTrang> Xau </TinhTrang>
+                </CuonSach>
+            </DanhSachCuonSach>
+        <DauSach>
+    </DauSachs>
+</ThuVien>

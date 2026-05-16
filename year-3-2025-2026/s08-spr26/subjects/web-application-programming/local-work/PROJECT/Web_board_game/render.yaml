@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: web-board-game-api
+    runtime: node
+    repo: https://github.com/S0ra1n0/Web_board_game
+    branch: integration/merge-member-branches
+    rootDir: .
+    region: singapore
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: API_KEY
+        sync: false
+      - key: APP_ORIGIN
+        sync: false
+      - key: BACKEND_PUBLIC_URL
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false

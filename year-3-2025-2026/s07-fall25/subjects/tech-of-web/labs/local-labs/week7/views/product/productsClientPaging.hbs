@@ -1,0 +1,83 @@
+{{!-- views/product/productsClientPaging.hbs --}}
+<h3 class="mb-3">Client-side Pagination</h3>
+
+<div id="clientProductList" class="row row-cols-1 row-cols-md-3 g-4"></div>
+
+<nav aria-label="Client Product pages" class="mt-4">
+    <ul id="clientPagination" class="pagination justify-content-center"></ul>
+</nav>
+
+<script>
+    // products data injected from server
+    const PRODUCTS = {{{productsJson}}};
+    const PAGE_SIZE = 6;
+
+    function renderProducts(items) {
+        const container = document.getElementById('clientProductList');
+        container.innerHTML = items.map(p => `
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <div class="ratio ratio-1x1">
+                        <img src="/imgs/p${p.id}.png" class="img-card-top" alt="${p.title}" onerror="this.src='https://placehold.co/400x400'">
+                    </div>
+                    <div class="card-body mt-2">
+                        <h4 class="card-title">${p.title}</h4>
+                        <p class="card-text text-truncate mt-3">${p.description}</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a class="btn btn-primary" href="/products/${p.id}">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderPagination(totalItems, currentPage) {
+        const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+        const ul = document.getElementById('clientPagination');
+        let html = '';
+
+        const hasPrev = currentPage > 1;
+        html += `
+            <li class="page-item ${hasPrev ? '' : 'disabled'}">
+                <a class="page-link" href="#" data-page="${currentPage - 1}">&laquo;</a>
+            </li>`;
+
+        for (let i = 1; i <= totalPages; i++) {
+            html += `
+                <li class="page-item ${i === currentPage ? 'active' : ''}">
+                    <a class="page-link" href="#" data-page="${i}">${i}</a>
+                </li>`;
+        }
+
+        const hasNext = currentPage < totalPages;
+        html += `
+            <li class="page-item ${hasNext ? '' : 'disabled'}">
+                <a class="page-link" href="#" data-page="${currentPage + 1}">&raquo;</a>
+            </li>`;
+
+        ul.innerHTML = html;
+    }
+
+    function showPage(page = 1) {
+        const totalItems = PRODUCTS.length;
+        const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+        const current = Math.min(Math.max(1, page), totalPages);
+        const start = (current - 1) * PAGE_SIZE;
+        const items = PRODUCTS.slice(start, start + PAGE_SIZE);
+        renderProducts(items);
+        renderPagination(totalItems, current);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        showPage(1);
+
+        document.getElementById('clientPagination').addEventListener('click', (e) => {
+            const a = e.target.closest('a.page-link');
+            if (!a) return;
+            e.preventDefault();
+            const page = Number(a.dataset.page) || 1;
+            showPage(page);
+        });
+    });
+</script>

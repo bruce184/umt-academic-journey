@@ -1,0 +1,48 @@
+<h3 class="mb-3">Add course</h3>
+
+{{#if errors.length}}
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      {{#each errors}}
+        <li><strong>{{path}}</strong>: {{message}}</li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}
+
+<form method="POST" action="/courses" class="card p-3">
+  <div class="mb-2">
+    <label class="form-label">Title</label>
+    <input class="form-control" name="title" value="{{values.title}}">
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label">Instructor</label>
+    <select class="form-select" name="instructor_id">
+      <option value="">-- Select --</option>
+    {{#each instructors}}
+    <option value="{{this.instructor_id}}" {{#if (eq ../values.instructor_id this.instructor_id)}}selected{{/if}}>
+        {{this.name}}
+    </option>
+    {{/each}}
+    </select>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label">Current price</label>
+    <input class="form-control" name="current_price" value="{{values.current_price}}">
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label">Original price</label>
+    <input class="form-control" name="original_price" value="{{values.original_price}}">
+  </div>
+
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" name="is_bestseller" value="true" {{#if values.is_bestseller}}checked{{/if}}>
+    <label class="form-check-label">Bestseller</label>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Create</button>
+  <a class="btn btn-secondary ms-2" href="/courses">Cancel</a>
+</form>

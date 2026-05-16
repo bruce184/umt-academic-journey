@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>V3_Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="mx-auto max-w-[1200px] p-3 border border-gray-300">
+    <!-- NAV -->
+    <nav class="flex flex-col sm:flex-row sm:justify-between sm:items-center sm:px-4 bg-indigo-100 rounded p-2">
+      <a href="#" class="text-2xl font-bold no-underline text-gray-800">Brand</a>
+      <div class="text-2xl mb-2 sm:hidden"></div>
+      <ul class="list-none flex flex-col sm:flex-row gap-2 m-0 p-0">
+        <li><a href="#" class="no-underline">Home</a></li>
+        <li><a href="#" class="no-underline">About</a></li>
+        <li><a href="#" class="no-underline">Services</a></li>
+        <li><a href="#" class="no-underline">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="flex flex-col sm:flex-row gap-2 mt-2">
+      <!-- left -->
+      <div class="w-full sm:w-1/4 bg-gray-100 rounded p-3">
+        <ul class="flex sm:flex-col list-none space-x-2 sm:space-x-0 sm:space-y-2 m-0 p-0">
+          <li><a href="rd00_css.html#section1" class="no-underline">Section 1</a></li>
+          <li><a href="rd00_css.html#section2" class="no-underline">Section 2</a></li>
+          <li><a href="rd00_css.html#section3" class="no-underline">Section 3</a></li>
+        </ul>
+      </div>
+
+      <!-- right -->
+      <div class="w-full sm:w-3/4 bg-yellow-100 rounded p-3">
+        <div class="flex sm:flex-row md:items-end gap-3 mb-3">
+          <div class="text-center md:flex-shrink-0">
+            <img class="max-w-full h-auto rounded object-contain"
+                 src="https://placeholder.co/200/png"
+                 alt="Placeholder Image" />
+          </div>
+          <div class="">
+            <h1 class="text-center text-3xl font-semibold mb-2">Main Content Heading</h1>
+            <p>
+              This is a paragraph of text in the main content area. It provides
+              information about the topic discussed in this section.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-text">
+          <h2 id="section1" class="text-2xl font-medium mb-1">Section 1</h2>
+          <p>Details about Section 1 go here.</p>
+          <h2 id="section2" class="text-2xl font-medium mb-1">Section 2</h2>
+          <p>Details about Section 2 go here.</p>
+          <h2 id="section3" class="text-2xl font-medium mb-1">Section 3</h2>
+          <p>Details about Section 3 go here.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="flex justify-center mt-2">
+      <div class="w-full bg-gray-200 rounded p-3 text-center">
+        <p>Footer content goes here</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

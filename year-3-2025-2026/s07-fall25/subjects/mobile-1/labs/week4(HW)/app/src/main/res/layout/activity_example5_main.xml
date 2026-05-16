@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:padding="16dp"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/shareEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập nội dung muốn chia sẻ"
+        android:inputType="textMultiLine"
+        android:minLines="3" />
+
+    <Button
+        android:id="@+id/shareBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Share Text"
+        android:layout_marginTop="12dp" />
+</LinearLayout>

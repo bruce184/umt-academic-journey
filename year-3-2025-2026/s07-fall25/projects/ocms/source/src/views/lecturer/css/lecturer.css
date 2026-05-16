@@ -1,0 +1,72 @@
+/* Define a custom color variable for accents (Bright Cyan) */
+:root {
+  --accent: #12ebeb;
+}
+.sidebar {
+  background-color: #003366; /* Deep Blue Sidebar */
+  color: #ffffff; /* White */
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+}
+.topbar {
+  /* Fixed header style matching the sidebar color */
+  background-color: #003366;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.brand {
+  color: var(--accent); /* Cyan color for the brand text */
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  font-weight: 900;
+}
+/* Active link styling matching the mockup's solid block style */
+.active-link {
+  background-color: #0056a0; /* Slightly lighter blue for active state */
+  color: #ffffff; /* White */
+  border-radius: 0; /* Remove rounded corners for blocky look */
+  border-left: 4px solid var(--accent); /* Cyan line on the left */
+  /* Adjust padding to account for the border line */
+  padding-left: 20px;
+}
+.menu-link {
+  border-radius: 0; /* Blocky look */
+}
+.menu-link:not(.active-link) {
+  color: #d1d5db; /* Gray-300 */
+  padding: 12px 16px; /* Uniform padding */
+}
+
+/* Custom styles for the schedule grid */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  border: 1px solid #d1d5db; /* Gray-300 */
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.schedule-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  background-color: #e5e7eb; /* Gray-200 */
+}
+.schedule-cell {
+  min-height: 100px;
+  background-color: #ffffff; /* White */
+  border: none;
+}
+
+/* Hide scrollbar for the sidebar */
+.sidebar-scroll {
+  -ms-overflow-style: none;
+}
+@supports (scrollbar-width: none) {
+  .sidebar-scroll {
+    scrollbar-width: none;
+  }
+}
+.sidebar-scroll::-webkit-scrollbar {
+  display: none;
+}

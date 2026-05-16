@@ -1,0 +1,72 @@
+int waitingHackers = 0
+int waitingEmployees = 0
+
+mutex mtx                      // bảo vệ hai biến trên
+semaphore semHackers = 0       // hàng đợi cho Hacker
+semaphore semEmployees = 0     // hàng đợi cho Employee
+barrier boatBarrier(4)         // chờ đủ 4 thread rồi mới vượt sông
+
+// (lưu ý) CRITICAL SECTION 
+mtx.lock()
+   // ↓ Chỉ ở đây bạn được phép:
+   // - Thay đổi waitingHackers / waitingEmployees
+   // - Quyết định form nhóm và signal các semaphore
+mtx.unlock()
+
+// TIẾN TRÌNH HACKER 
+procedure Hacker():
+    arriveAtDock()
+    
+    mtx.lock()
+      waitingHackers += 1
+
+      if waitingHackers == 4 then
+        // 4 Hacker ⇒ nhóm hợp lệ (0E+4H)
+        signal semHackers 4 lần
+        waitingHackers -= 4
+
+      else if waitingHackers >= 2 and waitingEmployees >= 2 then
+        // 2H + 2E ⇒ nhóm hợp lệ
+        signal semHackers 2 lần
+        signal semEmployees 2 lần
+        waitingHackers -= 2
+        waitingEmployees -= 2
+
+      // else chưa đủ để form nhóm: vẫn giữ trong hàng đợi
+
+    mtx.unlock()
+
+    semHackers.wait()         // đợi đến lượt lên thuyền
+    boardBoat("Hacker")       
+    boatBarrier.wait()        // chờ đủ 4 thread
+    crossRiver()
+
+// TIẾN TRÌNH EMMPLOYEE
+procedure Employee():
+    arriveAtDock()
+
+    mtx.lock()
+      waitingEmployees += 1
+
+      if waitingEmployees == 4 then
+        // 4 Employee ⇒ nhóm (4E+0H)
+        signal semEmployees 4 lần
+        waitingEmployees -= 4
+
+      else if waitingHackers >= 2 and waitingEmployees >= 2 then
+        // 2H + 2E
+        signal semHackers 2 lần
+        signal semEmployees 2 lần
+        waitingHackers -= 2
+        waitingEmployees -= 2
+
+    mtx.unlock()
+
+    semEmployees.wait()       // đợi lên thuyền
+    boardBoat("Employee")
+    boatBarrier.wait()
+    crossRiver()
+
+
+
+

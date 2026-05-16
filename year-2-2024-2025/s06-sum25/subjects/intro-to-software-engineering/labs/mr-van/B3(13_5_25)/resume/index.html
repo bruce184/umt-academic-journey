@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Bruce Nguyen – Full-Stack Developer</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- FontAwesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css\styles.css" />
+</head>
+
+<body>
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar__photo-wrap">
+        <img
+          src="assets/img/qs.jpg"
+          alt="Bruce Nguyen"
+          class="sidebar__photo"
+        />
+      </div>
+
+      <nav class="sidebar__nav" aria-label="Main navigation">
+        <ul class="sidebar__list">
+          <li><a href="#about"    class="active">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education" >Education</a></li>
+          <li><a href="#skills"    >Skills</a></li>
+          <li><a href="#interests" >Interests</a></li>
+          <li><a href="#awards"    >Awards</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT (SLIDES) -->
+    <main class="content">
+      <div class="slides">
+        <!-- ABOUT -->
+        <section id="about" class="section">
+          <h1 class="section__title-primary">
+            Bruce <span>Nguyen</span>
+          </h1>
+
+          <p class="section__contact">
+            <p> <b> Address:</b> Co Giang Street, Phu Nhuan District · Ho Chi Minh, VN </p>
+            <p> <b> Personal phone number:</b> +84 828-78-2775 </p>
+            <p> <b> Work email:</b> 
+              <a href="mailto:brucenguyen335@gmail.com">
+                brucenguyen335@gmail.com
+              </a>
+            </p>
+          </p>
+
+          <p class="section__tagline">
+            <b> Motto:</b> Turning complex problems into clean, user-friendly solutions.
+          </p>
+          <div class="section__social">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="section">
+          <h2 class="section__title">Experience</h2>
+          <div class="experience__item">
+            <div>
+              <h3>Senior Web Developer</h3>
+              <p class="sub">Intelitec Solutions</p>
+            </div>
+            <time>March 2013 – Present</time>
+            <p>
+              Led agile UI/UX revamp boosting engagement by 40%. Streamlined
+              cloud deployments with Docker & Kubernetes.
+            </p>
+          </div>
+          <div class="experience__item">
+            <div>
+              <h3>Web Developer</h3>
+              <p class="sub">Intelitec Solutions</p>
+            </div>
+            <time>Dec 2011 – March 2013</time>
+            <p>
+              Built responsive React components and improved load times by 30%
+              via code-splitting.
+            </p>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="section">
+          <h2 class="section__title">Education</h2>
+          <div class="education__item">
+            <div>
+              <h3>B.Sc. Information Technology</h3>
+              <p class="sub">Hanoi University of Science and Technology</p>
+            </div>
+            <time>Aug 2022 – Present</time>
+          </div>
+          <div class="education__item">
+            <div>
+              <h3>High School Diploma</h3>
+              <p class="sub">Le Hong Phong High School for the Gifted (GPA 3.8)</p>
+            </div>
+            <time>Aug 2019 – May 2022</time>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="section">
+          <h2 class="section__title">Skills</h2>
+          <div class="skills">
+            <div class="skill">
+              <span>C++ / OOP</span>
+              <div class="skill__bar skill__bar--90">
+                <span>90%</span>
+              </div>
+            </div>
+            <div class="skill">
+              <span>JavaScript</span>
+              <div class="skill__bar skill__bar--80">
+                <span>80%</span>
+              </div>
+            </div>
+            <div class="skill">
+              <span>Shell Scripting</span>
+              <div class="skill__bar skill__bar--85">
+                <span>85%</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- INTERESTS -->
+        <section id="interests" class="section">
+          <h2 class="section__title">Interests</h2>
+          <ul class="interests__list">
+            <li>Open-source contribution</li>
+            <li>Competitive programming</li>
+            <li>Travel photography</li>
+          </ul>
+        </section>
+
+        <!-- AWARDS -->
+        <section id="awards" class="section">
+          <h2 class="section__title">Awards</h2>
+          <ul class="awards__list">
+            <li>1st Prize – University Coding Olympiad (2024)</li>
+            <li>Dean’s List – IT Faculty (2022, 2023)</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Slider behavior -->
+  <script src="js\scripts.js" defer></script>
+</body>
+</html>

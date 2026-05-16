@@ -1,0 +1,252 @@
+/*──────────────────────────────────────────────────────────────────────────
+  styles.css — Complete stylesheet for vertical sliding panels with larger text
+──────────────────────────────────────────────────────────────────────────*/
+
+/* 1. ROOT VARIABLES & RESET */
+:root {
+  --sidebar-bg:    #b35e38;
+  --accent:        #b35e38;
+  --text-dark:     #2c3e50;
+  --text-light:    #fafafa;
+  --font-sans:     'Work Sans', sans-serif;
+  --font-serif:    'Roboto Slab', serif;
+  --base-font:     18px;        /* increased base font for readability */
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--base-font);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  background: #fff;
+  line-height: 1.6;
+}
+
+/* 2. LAYOUT & SIDEBAR */
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 260px;
+  background: var(--sidebar-bg);
+  color: var(--text-light);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.sidebar__photo-wrap {
+  width: 140px;
+  height: 140px;
+  /* border: 6px solid var(--accent); */
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.sidebar__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar__list {
+  list-style: none;
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar__list li {
+  margin: 1rem 0;
+}
+
+.sidebar__list a {
+  color: var(--text-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.sidebar__list a:hover,
+.sidebar__list a.active {
+  opacity: 0.8;
+}
+
+/* 3. CONTENT & VERTICAL SLIDES */
+.content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.slides {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 600vh;               /* 6 panels × 100vh */
+  transition: transform 0.6s ease;
+}
+
+/* 4. INDIVIDUAL SECTION PANELS */
+.section {
+  flex: 0 0 100vh;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 4rem;               /* extra padding for readability */
+  box-sizing: border-box;
+  font-size: 1.1rem;           /* slightly larger text */
+}
+
+/* ABOUT PANEL */
+.section__title-primary {
+  font-family: var(--font-serif);
+  font-size: 4rem;             /* larger main name */
+  margin-bottom: 0.5rem;
+}
+.section__title-primary span {
+  color: var(--accent);
+}
+.section__contact {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.section__tagline {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+.section__social {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.section__social a {
+  font-size: 1.5rem;
+  color: #444;
+  transition: color 0.2s;
+}
+.section__social a:hover {
+  color: var(--accent);
+}
+
+/* GENERIC SECTION TITLE */
+.section__title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;           /* larger H2s */
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* EXPERIENCE PANEL */
+.experience__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.experience__item .sub {
+  color: #777;
+  margin-top: 0.25rem;
+}
+
+/* EDUCATION PANEL */
+.education__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.education__item .sub {
+  color: #777;
+  margin-top: 0.25rem;
+}
+
+/* SKILLS PANEL */
+.skills {
+  display: grid;
+  gap: 1.5rem;
+}
+.skill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.skill__bar {
+  --height: 0.75rem;
+  flex: 1;
+  margin-left: 1rem;
+  background: #eee;
+  border-radius: var(--height);
+  overflow: hidden;
+  position: relative;
+}
+.skill__bar::before {
+  content: '';
+  display: block;
+  width: var(--pct);
+  height: var(--height);
+  background: var(--accent);
+}
+.skill__bar span {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+/* INTERESTS & AWARDS PANELS */
+.interests__list,
+.awards__list {
+  list-style: disc;
+  margin-left: 1.5rem;
+  line-height: 1.5;
+}
+
+/* 5. RESPONSIVE */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem 0.5rem;
+  }
+  .sidebar__photo-wrap {
+    display: none;
+  }
+  .content {
+    height: auto;
+  }
+  .slides {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  .section {
+    flex: 0 0 auto;
+    height: auto;
+    padding: 2rem 1rem;
+  }
+}

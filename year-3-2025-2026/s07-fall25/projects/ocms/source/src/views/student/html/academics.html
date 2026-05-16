@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academics Sinh viên - OCMS</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Inter -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    />
+
+    <!-- Layout chung cho tất cả roles -->
+    <link rel="stylesheet" href="../../common/layout.css" />
+
+    <!-- Theme & component riêng cho Student -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+
+  <body class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="sidebar w-64 text-white p-4 flex flex-col justify-between shadow-lg"
+      style="background-color: var(--color-primary)"
+    >
+      <div>
+        <!-- Logo + toggle -->
+        <div class="flex items-center justify-between mb-6">
+          <!-- Logo lớn -->
+          <a
+            href="dashboard-student.html"
+            id="sidebarLogo"
+            class="flex items-center space-x-2"
+          >
+            <img
+              src="../../../assets/logo.png"
+              alt="Logo UMT"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+            <span
+              id="sidebarLogoText"
+              class="font-bold text-lg sidebar-text"
+            >
+              OCMS
+            </span>
+          </a>
+
+          <!-- Logo nhỏ (khi thu gọn) -->
+          <a
+            href="dashboard-student.html"
+            id="sidebarLogoSmall"
+            class="hidden"
+          >
+            <img
+              src="../../../assets/logo.png"
+              alt="Logo UMT"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+          </a>
+
+          <!-- Nút thu gọn sidebar -->
+          <button
+            id="toggleSidebar"
+            class="text-white hover:text-gray-200 flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Menu Items -->
+        <nav class="space-y-2">
+          <a
+            href="dashboard-student.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+              />
+            </svg>
+            <span class="sidebar-text">Dashboard</span>
+          </a>
+
+          <a
+            href="student-registration.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H5a1 1 0 110-2h1V4zm2 2v1h8V6H6zm8 3v1H6V9h8z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">Enrollment (Ghi danh)</span>
+          </a>
+
+          <a
+            href="student-schedule.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">My Schedule (Lịch học)</span>
+          </a>
+
+          <!-- Trang hiện tại: Academics -->
+          <a
+            href="./academics.html"
+            class="sidebar-item active flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 005.5 16c1.255 0 2.443-.29 3.5-.804V4.804zM14.5 4A7.969 7.969 0 0011 4.804v10A7.968 7.968 0 0014.5 16c1.255 0 2.443-.29 3.5-.804v-10A7.969 7.969 0 0014.5 4z"
+              />
+            </svg>
+            <span class="sidebar-text">Academics (Học vụ)</span>
+          </a>
+
+          <a
+            href="#"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10 20a10 10 0 110-20 10 10 0 010 20zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V9z"
+              />
+            </svg>
+            <span class="sidebar-text">Financials (Tài chính)</span>
+          </a>
+
+          <a
+            href="./announcement.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 12.586V8a6 6 0 00-6-6zm-4 8a4 4 0 118 0v1H6V10z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">Announcements (Thông báo)</span>
+          </a>
+
+          <a
+            href="./eform.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+              <path
+                fill-rule="evenodd"
+                d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h.01a1 1 0 100-2H10zm3 0a1 1 0 000 2h.01a1 1 0 100-2H13z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">eForms (Biểu mẫu)</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Đăng xuất -->
+      <div class="border-t border-white/10 pt-4">
+        <a
+          href="../../../index/index.html"
+          class="sidebar-item flex items-center space-x-3 p-3"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span class="sidebar-text">Sign Out (Đăng xuất)</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 h-screen overflow-y-auto bg-gray-50">
+      <!-- Header -->
+      <header class="bg-white shadow-md">
+        <div
+          class="h-16 flex items-center justify-between px-4 md:px-6 lg:px-8 gap-4"
+        >
+          <!-- Breadcrumb -->
+          <div class="flex flex-col">
+            <div class="text-sm">
+              <span class="text-gray-500">Home /</span>
+              <span class="font-semibold text-gray-800">Academics</span>
+            </div>
+          </div>
+
+          <!-- Search + Avatar -->
+          <div class="flex items-center gap-4">
+            <!-- Search -->
+            <div class="hidden sm:block">
+              <div class="relative">
+                <input
+                  id="headerSearch"
+                  type="text"
+                  placeholder="Search..."
+                  class="w-56 rounded-full border border-gray-200 pl-9 pr-3 py-1.5
+                         text-sm focus:outline-none focus:ring-2
+                         focus:ring-[var(--color-primary-light)]
+                         focus:border-transparent"
+                />
+                <span class="absolute left-3 top-1.5 text-gray-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="11" cy="11" r="7" />
+                    <line x1="16" y1="16" x2="21" y2="21" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Avatar Menu -->
+            <div class="relative">
+              <button
+                id="avatarButton"
+                class="flex items-center space-x-2 focus:outline-none
+                       rounded-full border border-gray-200 px-2 py-1.5 hover:bg-gray-50"
+              >
+                <img
+                  class="h-9 w-9 rounded-full object-cover shadow"
+                  src="https://placehold.co/100x100/E6F2FF/007ACC?text=Huy"
+                  alt="Avatar"
+                />
+                <div class="text-left hidden md:block">
+                  <div class="font-semibold text-gray-700 text-sm">
+                    Hà Quang Huy
+                  </div>
+                  <div class="text-xs text-gray-500">
+                    MSSV: 2302700150
+                  </div>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-gray-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              <!-- Dropdown Menu -->
+              <div
+                id="avatarDropdown"
+                class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl
+                       overflow-hidden z-20 hidden transition-all duration-200 ease-out
+                       border border-gray-100"
+              >
+                <div class="p-4 border-b border-gray-200">
+                  <h4 class="font-semibold text-gray-800">Hà Quang Huy</h4>
+                  <p class="text-sm text-gray-500">
+                    huy.2302700150@umt.edu.vn
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="block px-4 py-3 text-gray-700 hover:bg-gray-50
+                         transition-colors duration-150"
+                >
+                  My Profile (Hồ sơ)
+                </a>
+                <a
+                  href="#"
+                  class="block px-4 py-3 text-gray-700 hover:bg-gray-50
+                         transition-colors duration-150"
+                >
+                  Inbox (Tin nhắn)
+                </a>
+                <a
+                  href="../../../index/index.html"
+                  class="block px-4 py-3 text-red-600 font-medium hover:bg-gray-50
+                         transition-colors duration-150 border-t border-gray-200"
+                >
+                  Sign Out (Đăng xuất)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <div class="p-6 md:p-8 space-y-6">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+          📚 Academics Overview (Tổng quan Học vụ)
+        </h1>
+
+        <!-- Cards tổng quan -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          <!-- GPA tích lũy -->
+          <div
+            class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500"
+          >
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-green-100 rounded-full p-3 mr-4">
+                <svg
+                  class="h-6 w-6 text-green-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m11 0V7a2 2 0 00-2-2h-2a2 2 0 00-2 2v12m4 0V3a2 2 0 00-2-2h-2a2 2 0 00-2 2v16"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-500">GPA Tích lũy</p>
+                <p
+                  id="cumulativeGpaValue"
+                  class="text-2xl font-semibold text-gray-900"
+                >
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- GPA học kỳ -->
+          <div
+            class="bg-white p-5 rounded-lg shadow-md border-l-4 border-blue-500"
+          >
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-blue-100 rounded-full p-3 mr-4">
+                <svg
+                  class="h-6 w-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 12l3 3 7-7"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-500">GPA Học kỳ</p>
+                <p
+                  id="termGpaValue"
+                  class="text-2xl font-semibold text-gray-900"
+                >
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tín chỉ hoàn thành -->
+          <div
+            class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500"
+          >
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-yellow-100 rounded-full p-3 mr-4">
+                <svg
+                  class="h-6 w-6 text-yellow-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.203 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.523 5.797 18 7.5 18s3.332.477 4.5 1.247m0-13C13.168 5.477 14.8 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.523 18.203 18 16.5 18s-3.332.477-4.5 1.247"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-500">
+                  Tín chỉ Hoàn thành
+                </p>
+                <p
+                  id="completedCreditsValue"
+                  class="text-2xl font-semibold text-gray-900"
+                >
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tình trạng học tập -->
+          <div
+            class="bg-white p-5 rounded-lg shadow-md border-l-4 border-indigo-500"
+          >
+            <div class="flex items-center">
+              <div class="flex-shrink-0 bg-indigo-100 rounded-full p-3 mr-4">
+                <svg
+                  class="h-6 w-6 text-indigo-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-500">
+                  Tình trạng Học tập
+                </p>
+                <p
+                  id="studyStatusValue"
+                  class="text-xl font-semibold text-indigo-900"
+                >
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chi tiết học vụ -->
+        <h2
+          class="text-xl font-bold text-gray-800 mb-4 pt-4 border-t border-gray-200"
+        >
+          Chi tiết Học vụ
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <a
+            href="#"
+            class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-150"
+          >
+            <p class="text-lg font-semibold text-indigo-600">
+              Bảng điểm (Grades)
+            </p>
+            <p class="text-sm text-gray-500 mt-1">
+              Xem chi tiết điểm số các môn học.
+            </p>
+          </a>
+          <a
+            href="#"
+            class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-150"
+          >
+            <p class="text-lg font-semibold text-indigo-600">Thời khóa biểu</p>
+            <p class="text-sm text-gray-500 mt-1">
+              Xem lịch học, phòng học hiện tại.
+            </p>
+          </a>
+          <a
+            href="#"
+            class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-150"
+          >
+            <p class="text-lg font-semibold text-indigo-600">
+              Kế hoạch học tập
+            </p>
+            <p class="text-sm text-gray-500 mt-1">
+              Theo dõi tiến độ hoàn thành chương trình.
+            </p>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Entry JS (ES module) -->
+    <script type="module" src="../js/academics-student.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json.*
+
+# IDE / OS
+.vscode/
+.DS_Store
+
+# Env & DB
+.env
+db/app.db
+
+# Logs / build (nếu có)
+logs/
+dist/
+coverage/

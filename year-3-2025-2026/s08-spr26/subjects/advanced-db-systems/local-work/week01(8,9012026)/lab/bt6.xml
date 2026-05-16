@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NiemGia>
+    <BoPhan ma="BP001">
+        <TenBoPhan> Ketoan </TenBoPhan>
+        <Sdt> 02838220011 </Sdt>
+        <Fax> 02838220012 </Fax>
+        <Email> ketoan@niemgia.vn </Email>
+        <NhanViens>
+            <NhanVien maNV="NV001">
+                <ChucVu> Truong phong </ChucVu>
+                <HoTen> Tran Thi Minh Chau </HoTen>
+                <Sdt> 0901234567 </Sdt>
+                <SoFax> 02838220013 </SoFax>
+                <Email> chau.tran@niemgia.vn </Email>
+            </NhanVien>
+
+            <NhanVien maNV="NV002">
+                <ChucVu> Pho phong </ChucVu>
+                <HoTen> Nguyen Van Khoa </HoTen>
+                <Sdt> 0912345678 </Sdt>
+                <SoFax> 02838220014 </SoFax>
+                <Email> khoa.nguyen@niemgia.vn </Email>
+            </NhanVien>
+
+            <NhanVien maNV="NV003">
+                <ChucVu> Nhan vien </ChucVu>
+                <HoTen> Le Hoang Anh </HoTen>
+                <Sdt> 0933456789 </Sdt>
+                <SoFax> 02838220015 </SoFax>
+                <Email> anh.le@niemgia.vn </Email>
+            </NhanVien>
+        </NhanViens>
+    </BoPhan>
+
+    <BoPhan ma="BP002">
+        <TenBoPhan> Nhan su </TenBoPhan>
+        <Sdt> 02839440021 </Sdt>
+        <Fax> 02839440022 </Fax>
+        <Email> nhansu@niemgia.vn </Email>
+        <NhanViens>
+            <NhanVien maNV="NV004">
+                <ChucVu> Truong phong </ChucVu>
+                <HoTen> Pham Quang Huy </HoTen>
+                <Sdt> 0977001122 </Sdt>
+                <SoFax> 02839440023 </SoFax>
+                <Email> huy.pham@niemgia.vn </Email>
+            </NhanVien>
+
+            <NhanVien maNV="NV005">
+                <ChucVu> Chuyen vien </ChucVu>
+                <HoTen> Vo Thi Ngoc Mai </HoTen>
+                <Sdt> 0988112233 </Sdt>
+                <SoFax> 02839440024 </SoFax>
+                <Email> mai.vo@niemgia.vn </Email>
+            </NhanVien>
+
+            <NhanVien maNV="NV006">
+                <ChucVu> Nhan vien </ChucVu>
+                <HoTen> Bui Gia Bao </HoTen>
+                <Sdt> 0966123456 </Sdt>
+                <SoFax> 02839440025 </SoFax>
+                <Email> bao.bui@niemgia.vn </Email>
+            </NhanVien>
+        </NhanViens>
+    </BoPhan>
+</NiemGia>

@@ -1,0 +1,29 @@
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
+
+# Build output
+target/
+build/
+out/
+bin/
+
+# Logs
+*.log
+
+# IDEs and editors
+.idea/
+*.iml
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# Tool caches
+.gradle/

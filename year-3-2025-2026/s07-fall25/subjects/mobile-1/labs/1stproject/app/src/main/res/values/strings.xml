@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">1stproject</string>
+    <string name="enter_a">Enter a</string>
+    <string name="enter_b">Enter b</string>
+    <string name="add">+</string>
+    <string name="subtract">-</string>
+    <string name="multiply">*</string>
+    <string name="divide">/</string>
+</resources>

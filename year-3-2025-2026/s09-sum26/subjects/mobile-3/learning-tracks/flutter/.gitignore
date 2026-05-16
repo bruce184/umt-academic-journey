@@ -1,0 +1,37 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# Editors
+.idea/
+**/.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+**/*.iml
+
+# Codex temp
+.codex-temp/
+
+# Dart / Flutter
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/.pub/
+**/build/
+**/coverage/
+**/android/.gradle/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Pods/
+**/linux/flutter/ephemeral/
+**/macos/Flutter/ephemeral/
+**/windows/flutter/ephemeral/
+**/windows/x64/
+
+# Logs
+*.log

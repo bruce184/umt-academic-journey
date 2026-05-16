@@ -1,0 +1,124 @@
+#include<bits/stdc++.h>
+#pragma GCC optimize("O3")
+#define Ret return 0;
+#define eln "\n";
+#define ll long long int
+#define fastIO ios_base::sync_with_stdio(NULL);cin.tie(0);cout.tie(0);
+#define all(x) x.begin(), x.end()
+using namespace std;
+
+//HASH TABLE -> Key
+struct node {
+    int data;
+    node* next;
+};
+typedef node* Pnode;
+
+void addhead(int x, Pnode& H) {
+    Pnode p;
+    p = new node;
+    p->data = x;
+    p->next = H;
+    H = p;
+}
+
+void addtail(int x, Pnode& H) {
+    Pnode p, q;
+    p = new node;
+    p->data = x;
+    p->next = NULL;
+    q = H;
+    if (H == NULL) {
+        addhead(x, H);
+    } else {
+        while (q->next != NULL) {
+            q = q->next;
+        }
+        q->next = p;
+    }
+}
+
+void display(Pnode H) {
+    while (H != NULL) {
+        cout << H->data << " ";
+        H = H->next;
+    }
+}
+
+void removewhenaccessed(int x, Pnode& H) {
+    Pnode p = H;
+    if (H == NULL || H->next == NULL) {return;} //Ko co hoac chi co 1 node
+    while (p->next->data != x) {
+        p = p->next;
+    }
+    Pnode q = p->next;
+    p->next = q->next;
+    delete q;
+    addhead(x, H);
+}
+
+void removehead(Pnode &H) {
+    if (H == NULL) {return;}
+}
+
+void removetail(Pnode &H) {
+    if (H == NULL) {return;} //Truong hop dslk null
+    if (H->next == NULL) { //Neu chi co 1 node
+        delete H;
+        H = NULL;
+    } else {
+        Pnode p = H;
+        while (p->next->next != NULL) {
+            p = p->next;
+        }
+        Pnode q = p->next;
+        p->next = NULL;
+        delete q;
+    }
+}
+
+bool checkexist(int x, Pnode H) {
+    while (H != NULL) {
+        if (H->data == x) {
+            return 1;
+        }
+        H = H->next;
+    }
+    return 0;
+}
+
+void show_maxcap(int n, Pnode H) {
+    cout << "Maximum capacity: " << n << eln
+    display(H);
+    cout << eln
+    cout << "(Nhap -1 de stop program)" << eln
+}
+
+int main() {
+    //fastIO
+    Pnode H = NULL;
+    cout << "Maximum capacity: ";
+    int n; // pre-define maximum capacity of the bookshelf
+    cin >> n;
+    cout << eln
+    for (int i = 1; i <= n; ++i) {
+        addhead(i, H);
+    }
+    while (true) {
+        system("cls");
+        show_maxcap(n, H);
+        cout << "Nhap ID sach: ";
+        int m;
+        cin >> m;
+        if (m == -1) {break;} //Dung program
+        if (H->data == m) {continue;}
+        if (checkexist(m, H) == 0) { //Truong hop sach moi
+            removetail(H);
+            addhead(m, H);
+        } else { //Truong hop sach cu dc truy cap -> dua len dau
+            removewhenaccessed(m, H);
+        }
+    }
+    cout << eln
+    cout << "Program ended.";
+}

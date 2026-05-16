@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dashboard — Lecturer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <!-- Layout chung -->
+    <link rel="stylesheet" href="../../common/layout.css" />
+    <!-- Custom Stylesheet Link (Lecturer theme) -->
+    <link rel="stylesheet" href="../lecturer.css" />
+  </head>
+  <body class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="sidebar w-64 flex flex-col justify-between transition-all duration-300 overflow-y-auto sidebar-scroll"
+    >
+      <!-- Top Section: Brand and Navigation -->
+      <div class="flex flex-col flex-grow">
+        <div
+          class="brand p-6 text-2xl font-extrabold tracking-wider border-b border-gray-700"
+        >
+          DASHBOARD
+        </div>
+        <!-- Nav gốc giữ nguyên -->
+        <nav class="flex flex-col space-y-0 text-white">
+            <!-- Main Menu Links -->
+            <a
+              class="menu-link active-link flex items-center p-3 text-sm font-medium hover:bg-[#0056a0] transition duration-150"
+              data-content="dashboard"
+              href="#"
+            >
+              <i class="bi bi-speedometer2 w-5 h-5 mr-3"></i> Dashboard
+            </a>
+            <a
+              class="menu-link flex items-center p-3 text-sm font-medium hover:bg-[#0056a0] transition duration-150"
+              data-content="attendance"
+              href="#"
+            >
+              <i class="bi bi-clipboard-check w-5 h-5 mr-3"></i> Attendance
+            </a>
+            <a
+              class="menu-link flex items-center p-3 text-sm font-medium hover:bg-[#0056a0] transition duration-150"
+              data-content="myschedule"
+              href="#"
+            >
+              <i class="bi bi-calendar3 w-5 h-5 mr-3"></i> My schedule
+            </a>
+            <a
+              class="menu-link flex items-center p-3 text-sm font-medium hover:bg-[#0056a0] transition duration-150"
+              data-content="announcement"
+              href="#"
+            >
+              <i class="bi bi-megaphone w-5 h-5 mr-3"></i> Announcement
+            </a>
+
+            <!-- Class Menu with Dropdown for Sub-tabs -->
+            <a
+              class="menu-link flex items-center justify-between p-3 text-sm font-medium hover:bg-[#0056a0] transition duration-150"
+              data-content="class"
+              href="#"
+              id="class-menu-toggle"
+            >
+              <span class="flex items-center"
+                ><i class="bi bi-journal-bookmark w-5 h-5 mr-3"></i> Class</span
+              >
+              <i
+                class="bi bi-chevron-down text-xs transition-transform duration-150"
+                id="class-menu-arrow"
+              ></i>
+            </a>
+
+            <!-- Class Submenu -->
+            <div
+              id="class-submenu"
+              class="flex flex-col ml-4 space-y-0 border-l border-gray-500"
+              style="display: none"
+            >
+              <a
+                class="sub-menu-link text-gray-300 py-3 px-3 text-sm font-medium hover:bg-[#0056a0] hover:text-white transition duration-150"
+                data-content="tests"
+                href="#"
+                >Tests</a
+              >
+              <a
+                class="sub-menu-link text-gray-300 py-3 px-3 text-sm font-medium hover:bg-[#0056a0] hover:text-white transition duration-150"
+                data-content="grades"
+                href="#"
+                >Grades</a
+              >
+              <a
+                class="sub-menu-link text-gray-300 py-3 px-3 text-sm font-medium hover:bg-[#0056a0] hover:text-white transition duration-150"
+                data-content="material"
+                href="#"
+                >Material</a
+              >
+            </div>
+
+            <a
+              class="menu-link flex items-center p-3 text-sm font-medium hover:bg-[#0056a0] transition duration-150"
+              data-content="courses"
+              href="#"
+            >
+              <i class="bi bi-book w-5 h-5 mr-3"></i> Courses
+            </a>
+        </nav>
+      </div>
+
+      <!-- Bottom Section: Sign Out shortcut -->
+      <div class="p-4 border-t border-gray-700">
+        <a
+          href="/logout"
+          class="flex items-center justify-center px-4 py-2 rounded-lg bg-white/10 text-sm font-medium text-white hover:bg-white/20 transition duration-150"
+        >
+          <i class="bi bi-box-arrow-right mr-2"></i>
+          Sign out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 h-screen overflow-y-auto bg-gray-50 flex flex-col">
+      <!-- Top Bar/Header -->
+      <header
+        class="topbar flex items-center justify-between px-4 md:px-6 lg:px-8 h-16 text-white"
+      >
+        <!-- Left: Title / Breadcrumb (simple) -->
+        <div class="flex flex-col">
+          <span class="text-xs md:text-sm text-cyan-200">OCMS / Lecturer</span>
+          <span class="text-lg md:text-xl font-semibold">Dashboard</span>
+        </div>
+
+        <!-- Right: Search + Notification + Profile -->
+        <div class="flex items-center space-x-4 md:space-x-6">
+          <!-- Search (hidden on very small screens) -->
+          <div class="hidden sm:block">
+            <div
+              class="flex items-center bg-white/10 rounded-full px-3 py-1.5"
+            >
+              <i class="bi bi-search text-cyan-200 mr-2 text-sm"></i>
+              <input
+                type="text"
+                placeholder="Search..."
+                class="bg-transparent border-0 focus:ring-0 focus:outline-none text-sm text-white placeholder:text-cyan-200 w-40 md:w-56"
+              />
+            </div>
+          </div>
+
+          <!-- Notification icon -->
+          <button
+            type="button"
+            class="relative text-white hover:text-cyan-300 transition duration-150"
+          >
+            <i class="bi bi-bell text-xl"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-red-500 text-[10px] leading-none rounded-full px-1.5 py-[2px]"
+              >3</span
+            >
+          </button>
+
+          <!-- Profile dropdown -->
+          <div class="relative">
+            <button
+              id="avatarButton"
+              class="flex items-center space-x-2 bg-white/10 hover:bg-white/20 rounded-full px-2 py-1.5 border border-white/40"
+            >
+              <div
+                class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-[#003366] font-bold shadow"
+              >
+                <i class="bi bi-person text-xl"></i>
+              </div>
+              <div class="hidden md:block text-left">
+                <div class="text-sm font-semibold leading-tight">
+                  Lecturer
+                </div>
+                <div class="text-xs text-cyan-100 leading-tight">
+                  lecturer@umt.edu.vn
+                </div>
+              </div>
+              <i class="bi bi-chevron-down text-xs md:text-sm"></i>
+            </button>
+
+            <div
+              id="avatarDropdown"
+              class="absolute right-0 mt-2 w-56 bg-white text-gray-800 rounded-lg shadow-xl overflow-hidden z-20 hidden"
+            >
+              <div class="p-4 border-b border-gray-200">
+                <h4 class="font-semibold">Lecturer</h4>
+                <p class="text-sm text-gray-500">lecturer@umt.edu.vn</p>
+              </div>
+              <a
+                href="#"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Edit profile
+              </a>
+              <a
+                href="/logout"
+                class="block px-4 py-3 text-sm text-red-600 hover:bg-red-50 border-t border-gray-100"
+              >
+                Sign out
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Tabs Content -->
+      <div class="p-6 md:p-8 flex-1">
+        <!-- Phần nội dung tab giữ nguyên từ file gốc -->
+        <div id="content-dashboard" class="main-content-tab space-y-4">
+          <h2 class="text-3xl font-bold" style="color: var(--accent)">
+            Welcome, Lecturer.
+          </h2>
+          <p class="text-gray-500">
+            Vui lòng chọn chức năng từ menu bên trái.
+          </p>
+        </div>
+
+        <div
+          id="content-attendance"
+          class="main-content-tab hidden space-y-6"
+        >
+          <h3 class="text-2xl font-semibold mb-4">Attendance</h3>
+
+          <div class="bg-white rounded-lg shadow-md border border-gray-200 p-4 space-y-4">
+            <!-- Bộ lọc lớp & ngày -->
+            <div
+              class="flex flex-col md:flex-row md:items-end md:space-x-4 space-y-3 md:space-y-0"
+            >
+              <div class="flex-1">
+                <label
+                  for="attendance-class-select"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Class</label
+                >
+                <select
+                  id="attendance-class-select"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-cyan-400 focus:border-cyan-400"
+                >
+                  <option value="">Loading classes...</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="attendance-date-input"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Date</label
+                >
+                <input
+                  id="attendance-date-input"
+                  type="date"
+                  class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-cyan-400 focus:border-cyan-400"
+                />
+              </div>
+
+              <div class="flex md:justify-end">
+                <button
+                  id="attendance-reload-btn"
+                  class="mt-1 md:mt-0 px-4 py-2 text-sm bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 transition duration-150"
+                >
+                  Reload
+                </button>
+              </div>
+            </div>
+
+            <!-- Bảng điểm danh -->
+            <div
+              id="attendance-list-container"
+              class="mt-4 overflow-x-auto"
+            >
+              <div class="text-sm text-gray-500">
+                Select a class to load the student list.
+              </div>
+            </div>
+
+            <div class="flex justify-end pt-2">
+              <button
+                id="attendance-save-btn"
+                class="px-4 py-2 text-sm bg-[#12ebeb] text-[#003366] font-semibold rounded-lg hover:bg-cyan-300 transition duration-150"
+              >
+                Save Attendance
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="content-myschedule"
+          class="main-content-tab hidden space-y-6"
+        >
+          <h3 class="text-2xl font-semibold mb-4">My Schedule</h3>
+
+          <!-- Lưới thời khoá biểu, JS sẽ render toàn bộ header + ô -->
+          <div
+            id="schedule-grid"
+            class="schedule-grid shadow-lg"
+          >
+            <!-- lecturer-schedule.js sẽ fill nội dung vào đây -->
+          </div>
+        </div>
+
+        <div
+          id="content-announcement"
+          class="main-content-tab hidden space-y-6"
+        >
+          <h3 class="text-2xl font-semibold mb-4">Announcement</h3>
+
+          <div class="flex justify-between items-center mb-4">
+            <input
+              id="announcement-search"
+              type="text"
+              class="p-2 border border-gray-300 rounded-lg max-w-xs focus:ring-cyan-400 focus:border-cyan-400"
+              placeholder="Search announcements..."
+            />
+            <button
+              id="announcement-new-btn"
+              class="px-4 py-2 text-sm bg-gray-100 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-200 transition duration-150"
+            >
+              New
+            </button>
+          </div>
+
+          <!-- Danh sách thông báo cho Lecturer -->
+          <div
+            id="lecturer-announcement-list"
+            class="space-y-4"
+          >
+            <!-- JS (lecturer-announcement.js) sẽ render các thẻ thông báo vào đây -->
+          </div>
+        </div>
+
+        <div
+          id="content-class"
+          class="main-content-tab hidden space-y-6"
+        >
+          <h3 class="text-2xl font-semibold mb-4">Class</h3>
+
+          <!-- Class List -->
+          <div class="bg-white rounded-lg shadow-md border border-gray-200">
+            <div
+              class="flex items-center justify-between px-4 py-3 border-b bg-gray-50"
+            >
+              <div>
+                <h4 class="font-semibold text-gray-800">
+                  Classes you are teaching
+                </h4>
+                <p class="text-sm text-gray-500">
+                  Chọn một lớp để xem chi tiết và quản lý.
+                </p>
+              </div>
+              <button
+                class="px-4 py-2 text-sm font-medium bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-150"
+              >
+                + New class
+              </button>
+            </div>
+
+            <!-- Container cho JS render danh sách lớp -->
+            <div id="class-list-view" class="divide-y">
+              <!-- JS (lecturer-analytics.js) sẽ render header + rows vào đây -->
+            </div>
+          </div>
+
+          <!-- Course Detail & Sub-tabs -->
+          <div class="bg-white rounded-lg shadow-md border border-gray-200">
+            <div
+              class="flex items-center justify-between px-4 py-3 border-b bg-gray-50"
+            >
+              <div>
+                <h4 class="font-semibold text-gray-800">
+                  Course: Lập trình C++ - SE101
+                </h4>
+                <p class="text-sm text-gray-500">
+                  Quản lý bài kiểm tra, điểm số và tài liệu cho môn học này.
+                </p>
+              </div>
+              <div class="space-x-2">
+                <button
+                  class="px-3 py-1 text-sm bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-150"
+                >
+                  Export
+                </button>
+                <button
+                  id="add-tests-btn"
+                  class="px-3 py-1 text-sm bg-[#003366] text-white rounded-lg hover:bg-[#0056a0] transition duration-150"
+                >
+                  NEW TESTS
+                </button>
+              </div>
+            </div>
+
+            <!-- Sub-tabs -->
+            <div
+              class="flex items-center border-b bg-white text-sm font-medium"
+            >
+              <button
+                class="sub-tab-link px-4 py-3 border-b-2 border-[#003366] text-[#003366]"
+                data-target="class-sub-tests"
+              >
+                Tests
+              </button>
+              <button
+                class="sub-tab-link px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-[#003366]"
+                data-target="class-sub-grades"
+              >
+                Grades
+              </button>
+              <button
+                class="sub-tab-link px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-[#003366]"
+                data-target="class-sub-material"
+              >
+                Material
+              </button>
+            </div>
+
+            <!-- Sub-content: Tests, Grades, Material -->
+            <div id="class-sub-tests" class="sub-tab-content space-y-3">
+              <h4 class="text-xl font-semibold mb-3 border-b pb-2">
+                Tests Management
+              </h4>
+
+              <!-- Course tag + New test -->
+              <div class="flex items-center justify-between">
+                <div
+                  class="flex items-center p-3 border rounded-lg bg-gray-100 text-gray-500"
+                >
+                  <span class="text-xs uppercase tracking-wide mr-3">Course</span>
+                  <span
+                    id="lecturer-tests-course-code"
+                    class="font-semibold mr-2"
+                    >SE101</span
+                  >
+                  <span
+                    id="lecturer-tests-course-name"
+                    class="text-xs text-gray-400"
+                    >(Lập trình C++)</span
+                  >
+                </div>
+
+                <button
+                  id="lecturer-test-new-btn"
+                  class="px-3 py-2 text-sm bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-150"
+                >
+                  + New Test
+                </button>
+              </div>
+
+              <!-- Test list (JS sẽ render) -->
+              <div
+                id="lecturer-tests-list"
+                class="border border-gray-200 rounded-lg bg-white shadow-sm"
+              >
+                <!-- lecturer-tests-grades.js sẽ render header + rows -->
+              </div>
+            </div>
+
+            <div
+              id="class-sub-grades"
+              class="sub-tab-content hidden space-y-3"
+            >
+              <h4 class="text-xl font-semibold mb-3 border-b pb-2">Grades</h4>
+
+              <!-- Course tag (giống Tests) -->
+              <div class="flex items-center justify-between">
+                <div
+                  class="flex items-center p-3 border rounded-lg bg-gray-100 text-gray-500"
+                >
+                  <span class="text-xs uppercase tracking-wide mr-3">Course</span>
+                  <span
+                    id="lecturer-grades-course-code"
+                    class="font-semibold mr-2"
+                    >SE101</span
+                  >
+                  <span
+                    id="lecturer-grades-course-name"
+                    class="text-xs text-gray-400"
+                    >(Lập trình C++)</span
+                  >
+                </div>
+              </div>
+
+              <!-- Grades list (JS sẽ render) -->
+              <div
+                id="lecturer-grades-list"
+                class="border border-gray-200 rounded-lg bg-white shadow-sm"
+              >
+                <!-- lecturer-tests-grades.js sẽ render header + rows -->
+              </div>
+            </div>
+
+            <div
+              id="class-sub-material"
+              class="sub-tab-content hidden space-y-3"
+            >
+              <h4 class="text-xl font-semibold mb-3 border-b pb-2">
+                Material
+              </h4>
+              <p class="text-gray-600">
+                Nội dung quản lý tài liệu, bài giảng cho môn học.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="content-courses" class="main-content-tab hidden space-y-4">
+          <h3 class="text-2xl font-semibold mb-4">Courses Catalog</h3>
+          <p>Chi tiết các môn học và tài liệu liên quan.</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="text-center p-4 bg-[#003366] text-white">
+        <div class="font-bold text-lg uppercase">
+          TRƯỜNG ĐẠI HỌC QUẢN LÝ VÀ CÔNG NGHỆ THÀNH PHỐ HỒ CHÍ MINH
+        </div>
+        <div class="h-1 mx-auto mt-1 w-1/3 bg-red-500 rounded-full"></div>
+      </footer>
+    </main>
+
+    <!-- Modal NEW TESTS (giữ nguyên từ file gốc) -->
+    <div
+      class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden"
+      id="newTestsModal"
+    >
+      <div
+        class="bg-gray-100 w-full max-w-md p-6 rounded-xl shadow-2xl border-4 border-cyan-400/50"
+      >
+        <div class="text-center border-b pb-4 mb-4">
+          <h5
+            class="text-3xl font-extrabold text-[#003366]"
+            id="newTestsModalLabel"
+          >
+            NEW TESTS
+          </h5>
+          <input
+            type="text"
+            class="w-full mt-4 p-3 border border-gray-300 rounded-lg focus:ring-cyan-400 focus:border-cyan-400"
+            placeholder="Name tests: Midterm 1"
+          />
+        </div>
+        <div class="modal-body space-y-4">
+          <div>
+            <a
+              href="#"
+              class="text-cyan-600 font-bold hover:text-cyan-700 transition duration-150"
+            >
+              <i class="bi bi-plus-circle mr-2"></i>ADD QUESTION
+            </a>
+          </div>
+          <div
+            class="min-h-40 bg-white border border-gray-300 rounded-lg p-3 shadow-inner"
+          >
+            <!-- Question content goes here -->
+          </div>
+        </div>
+        <div class="flex justify-center pt-6 border-t mt-4">
+          <button
+            type="button"
+            class="px-6 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 shadow-md hover:bg-gray-50 transition duration-150"
+            data-dismiss="modal"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ES Module script cho Lecturer (layout + data) -->
+    <script type="module" src="../js/lecturer-dashboard.js"></script>
+    <script type="module" src="../js/lecturer-analytics.js"></script>
+    <script type="module" src="../js/lecturer-schedule.js"></script>
+    <script type="module" src="../js/lecturer-announcement.js"></script>
+    <script type="module" src="../js/lecturer-attendance.js"></script>
+    <script type="module" src="../js/lecturer-tests-grades.js"></script>
+  </body>
+</html>

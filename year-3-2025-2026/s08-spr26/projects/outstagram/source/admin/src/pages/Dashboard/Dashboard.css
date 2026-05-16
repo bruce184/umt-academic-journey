@@ -1,0 +1,70 @@
+.dashboard-alert {
+    margin-bottom: 24px;
+    border-radius: 16px;
+}
+
+.dashboard-stat-card {
+    position: relative;
+    overflow: hidden;
+    border: 0 !important;
+    border-radius: 22px !important;
+    box-shadow: 0 22px 46px rgba(15, 23, 42, 0.12);
+}
+
+.dashboard-stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent);
+    pointer-events: none;
+}
+
+.dashboard-stat-card .ant-card-body {
+    padding: 22px 24px;
+}
+
+.dashboard-stat-card--users {
+    background: linear-gradient(135deg, #1d4ed8 0%, #38bdf8 100%);
+}
+
+.dashboard-stat-card--posts {
+    background: linear-gradient(135deg, #047857 0%, #2dd4bf 100%);
+}
+
+.dashboard-stat-card--comments {
+    background: linear-gradient(135deg, #c2410c 0%, #fbbf24 100%);
+}
+
+.dashboard-stat-card--reports {
+    background: linear-gradient(135deg, #b91c1c 0%, #fb7185 100%);
+}
+
+.dashboard-stat-title {
+    color: rgba(255, 255, 255, 0.86);
+    font-weight: 600;
+}
+
+.dashboard-charts-row {
+    margin-top: 24px;
+}
+
+.dashboard-chart-card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #dbe7f4 !important;
+    border-radius: 22px !important;
+    box-shadow: 0 18px 38px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-chart-card .ant-card-head {
+    border-bottom-color: #e5edf7;
+}
+
+.dashboard-chart-card .ant-card-head-title {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.dashboard-chart-loading {
+    text-align: center;
+    padding: 48px;
+}

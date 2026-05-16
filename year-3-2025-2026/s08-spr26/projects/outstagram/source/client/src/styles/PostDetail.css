@@ -1,0 +1,6 @@
+.post-detail-route-backdrop {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(59, 130, 246, 0.08), transparent 28%),
+        linear-gradient(180deg, #090c10 0%, #090c10 100%);
+}

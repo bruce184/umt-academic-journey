@@ -1,0 +1,52 @@
+/* Base layout dùng chung cho mọi role.
+   Màu cụ thể từng role sẽ override trong styles.css riêng. */
+
+:root {
+  --color-primary: #0f766e;
+  --color-primary-light: #ecfeff;
+  --color-primary-dark: #0e4f4a;
+
+  --sidebar-width-expanded: 16rem; /* w-64 */
+  --sidebar-width-collapsed: 5rem;  /* w-20 */
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background-color: #f3f4f6;
+}
+
+/* Sidebar & menu items */
+
+.sidebar {
+  width: var(--sidebar-width-expanded);
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.75rem;
+  color: #e5e7eb;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.sidebar-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.sidebar-item.active {
+  background-color: rgba(15, 23, 42, 0.15);
+  color: #ffffff;
+}
+
+.sidebar-item.active .sidebar-text {
+  font-weight: 600;
+}
+
+/* Avatar dropdown z-index an toàn */
+#avatarDropdown {
+  z-index: 30;
+}

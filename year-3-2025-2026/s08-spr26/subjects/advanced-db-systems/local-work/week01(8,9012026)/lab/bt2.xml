@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Truong name = "THPT ABC"> 
+    <Lop name = "Lớp 12A9">
+        <SiSo> 3 </SiSo>
+        
+        <DanhSachHocSinh>
+            <HocSinh MS="HS001">
+                <HoTen>Nguyen Van A</HoTen>
+                <NgaySinh>2006-05-13</NgaySinh>
+                <NoiSinh>ĐN</NoiSinh>  
+            </HocSinh>
+
+            <HocSinh MS="HS002">
+                <HoTen>Tran Thi B</HoTen>
+                <NgaySinh>2006-05-14</NgaySinh>
+                <NoiSinh>NT</NoiSinh>
+            </HocSinh>
+
+            <HocSinh MS="HS003"> 
+                <HoTen>Le Van C</HoTen>
+                <NgaySinh>2006-05-15</NgaySinh>
+                <NoiSinh>VT</NoiSinh>
+            </HocSinh> 
+        </DanhSachHocSinh>
+    </Lop>
+</Truong>

@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - OCMS</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Layout chung (đồng bộ với Student / Lecturer) -->
+    <link rel="stylesheet" href="../../common/layout.css" />
+
+    <!-- CSS riêng cho Admin -->
+    <link rel="stylesheet" href="../css/admin-styles.css" />
+  </head>
+
+  <body class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="sidebar w-64 text-white p-4 flex flex-col justify-between shadow-lg"
+      style="background-color: var(--color-primary)"
+    >
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <a
+            href="admin-dashboard.html"
+            id="sidebarLogo"
+            class="flex items-center space-x-2"
+          >
+            <img
+              src="../../../images/logo.png"
+              alt="Logo UMT"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+            <span id="sidebarLogoText" class="font-bold text-lg sidebar-text"
+              >OCMS Admin</span
+            >
+          </a>
+
+          <!-- Logo nhỏ khi thu gọn sidebar -->
+          <a href="admin-dashboard.html" id="sidebarLogoSmall" class="hidden">
+            <img
+              src="../../../images/logo.png"
+              alt="Logo UMT"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+          </a>
+
+          <button
+            id="toggleSidebar"
+            class="text-white hover:text-gray-200 flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <nav class="space-y-2">
+          <!-- Dashboard -->
+          <a
+            href="admin-dashboard.html"
+            class="sidebar-item active flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+              />
+            </svg>
+            <span class="sidebar-text">Dashboard</span>
+          </a>
+
+          <!-- Quản lý Học vụ -->
+          <a
+            href="admin-courses.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 005.5 16c1.255 0 2.443-.29 3.5-.804V4.804zM14.5 4A7.969 7.969 0 0011 4.804v10A7.968 7.968 0 0014.5 16c1.255 0 2.443-.29 3.5-.804v-10A7.969 7.969 0 0014.5 4z"
+              />
+            </svg>
+            <span class="sidebar-text">Quản lý Học vụ</span>
+          </a>
+
+          <!-- Quản lý Người dùng -->
+          <a
+            href="admin-users.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">Quản lý Người dùng</span>
+          </a>
+
+          <!-- Báo cáo & Phân tích -->
+          <a
+            href="admin-reports.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"
+              />
+            </svg>
+            <span class="sidebar-text">Báo cáo & Phân tích</span>
+          </a>
+
+          <!-- Cấu hình Hệ thống -->
+          <a
+            href="admin-settings.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066 1.724 1.724 0 012.28 2.28c.09.3.24.57.43.82a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573 1.724 1.724 0 01-2.28 2.28c-.3.09-.57.24-.82.43a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066 1.724 1.724 0 01-2.28-2.28c-.09-.3-.24-.57-.43-.82a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573 1.724 1.724 0 012.28-2.28c.3-.09.57-.24.82-.43a1.724 1.724 0 002.573-1.066zM12 15a3 3 0 100-6 3 3 0 000 6z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">Cấu hình Hệ thống</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="border-t border-gray-700 pt-4">
+        <a href="/logout" class="sidebar-item flex items-center space-x-3 p-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span class="sidebar-text">Sign Out (Đăng xuất)</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 h-screen overflow-y-auto">
+      <!-- Header -->
+      <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div>
+          <span class="text-gray-500">Admin /</span>
+          <span class="font-semibold text-gray-800">Dashboard</span>
+        </div>
+        <div class="relative">
+          <button
+            id="avatarButton"
+            class="flex items-center space-x-2 focus:outline-none"
+          >
+            <img
+              class="h-10 w-10 rounded-full object-cover shadow bg-gray-300"
+              src="https://placehold.co/100x100/333333/FFFFFF?text=QTV"
+              alt="Avatar"
+            />
+            <div class="text-left hidden md:block">
+              <div class="font-semibold text-gray-700 text-sm">
+                Quản trị viên
+              </div>
+              <div class="text-xs text-gray-500">
+                administrator@umt.edu.vn
+              </div>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 text-gray-500"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <div
+            id="avatarDropdown"
+            class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl overflow-hidden z-20 hidden transition-all duration-300 ease-out"
+          >
+            <div class="p-4 border-b border-gray-200">
+              <h4 class="font-semibold text-gray-800">Quản trị viên</h4>
+              <p class="text-sm text-gray-500">
+                administrator@umt.edu.vn
+              </p>
+            </div>
+            <a
+              href="#"
+              class="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150"
+            >
+              Hồ sơ
+            </a>
+            <a
+              href="/logout"
+              class="block px-4 py-3 text-red-600 font-medium hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
+            >
+              Đăng xuất
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="p-6 md:p-8 space-y-6">
+        <h1 class="text-3xl font-bold text-gray-800">
+          Chào mừng, Quản trị viên!
+        </h1>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
+              Tổng Môn học
+            </h2>
+            <div class="flex items-center space-x-4">
+              <div class="p-3 bg-blue-100 rounded-full">
+                <svg
+                  class="h-6 w-6 text-blue-600"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 005.5 16c1.255 0 2.443-.29 3.5-.804V4.804zM14.5 4A7.969 7.969 0 0011 4.804v10A7.968 7.968 0 0014.5 16c1.255 0 2.443-.29 3.5-.804v-10A7.969 7.969 0 0014.5 4z"
+                  />
+                </svg>
+              </div>
+              <p id="totalCoursesStat" class="text-3xl font-bold text-gray-800">
+                0
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
+              Tổng Người dùng
+            </h2>
+            <div class="flex items-center space-x-4">
+              <div class="p-3 bg-green-100 rounded-full">
+                <svg
+                  class="h-6 w-6 text-green-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-1.657-1.343-3-3-3s-3 1.343-3 3v2m6 0H9m12-9a3 3 0 10-6 0 3 3 0 006 0zm-6 0a3 3 0 10-6 0 3 3 0 006 0z"
+                  />
+                </svg>
+              </div>
+              <p id="totalUsersStat" class="text-3xl font-bold text-gray-800">
+                0
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
+              Sức khỏe Dịch vụ
+            </h2>
+            <div class="flex items-center space-x-4">
+              <div class="p-3 bg-gray-200 rounded-full">
+                <svg
+                  class="h-6 w-6 text-gray-700"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
+                  />
+                </svg>
+              </div>
+              <p class="text-3xl font-bold text-green-600">Tốt</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin control cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Học vụ -->
+          <div
+            class="admin-card bg-white p-6 rounded-lg shadow-md border border-gray-200"
+          >
+            <div class="admin-card-header">Quản lý Học vụ</div>
+            <div class="admin-card-body">
+              <p class="text-sm text-gray-600 mb-4">
+                Môn học, tiên quyết, ghi danh, điểm, đánh giá, quiz, v.v.
+              </p>
+              <a href="admin-courses.html" class="admin-action-link">
+                Quản lý Môn học (Catalog)
+              </a>
+              <a href="admin-courses-prereq.html" class="admin-action-link">
+                Quy tắc Tiên quyết &amp; Giới hạn
+              </a>
+              <a
+                href="admin-courses-enrollment.html"
+                class="admin-action-link"
+              >
+                Cấu hình Kỳ Ghi danh (Add/Drop)
+              </a>
+              <a
+                href="admin-courses-curriculum.html"
+                class="admin-action-link"
+              >
+                Cấu hình Chương trình Đào tạo
+              </a>
+            </div>
+          </div>
+
+          <!-- Người dùng -->
+          <div
+            class="admin-card bg-white p-6 rounded-lg shadow-md border border-gray-200"
+          >
+            <div class="admin-card-header">Quản lý Người dùng</div>
+            <div class="admin-card-body">
+              <p class="text-sm text-gray-600 mb-4">
+                Tài khoản, phân quyền, hồ sơ, và các chính sách bảo mật.
+              </p>
+              <a href="admin-users-list.html" class="admin-action-link">
+                Danh sách Người dùng
+              </a>
+              <a href="admin-users-roles.html" class="admin-action-link">
+                Quản lý Phân quyền (Roles)
+              </a>
+              <a href="admin-users-policy.html" class="admin-action-link">
+                Chính sách Hồ sơ
+              </a>
+              <a href="admin-users-auth.html" class="admin-action-link">
+                Cấu hình Xác thực &amp; Bảo mật
+              </a>
+            </div>
+          </div>
+
+          <!-- Báo cáo & Phân tích -->
+          <div
+            class="admin-card bg-white p-6 rounded-lg shadow-md border border-gray-200"
+          >
+            <div class="admin-card-header">Báo cáo &amp; Phân tích</div>
+            <div class="admin-card-body">
+              <p class="text-sm text-gray-600 mb-4">
+                Nhật ký hệ thống và các báo cáo học vụ tổng hợp.
+              </p>
+              <a
+                href="admin-reports-auditlog.html"
+                class="admin-action-link"
+              >
+                Nhật ký Hệ thống (Audit Log)
+              </a>
+              <a
+                href="admin-reports-academic.html"
+                class="admin-action-link"
+              >
+                Báo cáo Học vụ
+              </a>
+            </div>
+          </div>
+
+          <!-- Cấu hình Hệ thống -->
+          <div
+            class="admin-card bg-white p-6 rounded-lg shadow-md border border-gray-200"
+          >
+            <div class="admin-card-header">Cấu hình Hệ thống</div>
+            <div class="admin-card-body">
+              <p class="text-sm text-gray-600 mb-4">
+                Cài đặt kỹ thuật, kênh thông báo, sao lưu, lưu trữ.
+              </p>
+              <a
+                href="admin-settings-notifications.html"
+                class="admin-action-link"
+              >
+                Cấu hình Kênh thông báo
+              </a>
+              <a href="admin-settings-backup.html" class="admin-action-link">
+                Sao lưu &amp; Phục hồi
+              </a>
+              <a href="admin-settings-storage.html" class="admin-action-link">
+                Quota Lưu trữ &amp; Tài liệu
+              </a>
+              <a href="admin-settings-messaging.html" class="admin-action-link">
+                Cài đặt Messaging
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- JS (dùng data thật từ /admin/stats) -->
+    <script type="module" src="../js/admin-dashboard.js"></script>
+  </body>
+</html>

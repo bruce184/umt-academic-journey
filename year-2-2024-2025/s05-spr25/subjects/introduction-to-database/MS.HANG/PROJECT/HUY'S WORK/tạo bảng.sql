@@ -1,0 +1,1 @@
+CREATE DATABASE university_management;

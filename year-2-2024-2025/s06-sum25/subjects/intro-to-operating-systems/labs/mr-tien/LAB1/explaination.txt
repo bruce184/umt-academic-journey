@@ -1,0 +1,12 @@
+Tab Processes
+This is a tab in System Monitor that monitor all the processes running on the laptop. In details, the system has: 
+	1. Name: the name of the process running  
+	2. User: by which account  (in this case: bruce) 
+	3. %CPU: takes up how much of the CPU 
+	4. ID
+	5. Memory (RAM): MB or KB 
+	6. Disk read total: the total read from disk storage since it started  
+	7. Disk write total: the total written to disk storage since it started 
+	8. Disk read: current speed of reading 
+	9. Disk write: current read of writing 
+	10. Priority: the lower the value the higher it is processed

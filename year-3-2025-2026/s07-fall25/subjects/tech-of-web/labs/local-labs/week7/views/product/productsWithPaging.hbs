@@ -1,0 +1,52 @@
+{{!-- views/product/productsWithPaging.hbs --}}
+<h3 class="mb-3">Server-side Pagination</h3>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {{#each products}}
+        <div class="col">
+            <div class="card h-100 shadow">
+                <div class="ratio ratio-1x1">
+                    <img src="/imgs/p{{ this.id }}.png"
+                         class="img-card-top"
+                         alt="{{ this.title }}">
+                </div>
+                <div class="card-body mt-2">
+                    <h4 class="card-title">{{ this.title }}</h4>
+                    <p class="card-text text-truncate mt-3">{{ this.description }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="btn btn-primary" href="/products/{{ this.id }}">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<nav aria-label="Product pages" class="mt-4">
+    <ul class="pagination justify-content-center">
+        {{!-- Previous --}}
+        <li class="page-item {{#if paging.hasPrev}}{{else}}disabled{{/if}}">
+            <a class="page-link"
+               href="/{{paging.prevPage}}"
+               aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        {{!-- Page numbers --}}
+        {{#range 1 paging.totalPages}}
+            <li class="page-item {{#if (eq this ../paging.page)}}active{{/if}}">
+                <a class="page-link" href="/{{this}}">{{this}}</a>
+            </li>
+        {{/range}}
+
+        {{!-- Next --}}
+        <li class="page-item {{#if paging.hasNext}}{{else}}disabled{{/if}}">
+            <a class="page-link"
+               href="/{{paging.nextPage}}"
+               aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

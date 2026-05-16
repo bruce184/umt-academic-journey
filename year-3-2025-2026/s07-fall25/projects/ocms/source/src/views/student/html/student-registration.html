@@ -1,0 +1,454 @@
+<!-- src/views/student/html/student-registration.html -->
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghi danh Học phần - OCMS</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Inter -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    />
+
+    <!-- Layout chung cho tất cả roles -->
+    <link rel="stylesheet" href="../../common/layout.css" />
+
+    <!-- Theme & component riêng cho Student -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+
+  <body class="bg-slate-100">
+    <main class="min-h-screen flex">
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="sidebar bg-gradient-to-b from-primary to-blue-900 text-white flex flex-col"
+      >
+        <!-- Logo + tên hệ thống -->
+        <div class="flex items-center gap-3 px-4 py-4 border-b border-white/10">
+          <!-- Logo đầy đủ -->
+          <a
+            href="dashboard-student.html"
+            id="sidebarLogo"
+            class="flex items-center gap-3"
+          >
+            <img
+              src="../../../assets/logo.png"
+              alt="Logo UMT"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+            <div class="flex flex-col">
+              <span class="text-sm font-semibold leading-tight">
+                OCMS Student
+              </span>
+              <span class="text-[0.7rem] text-blue-100 leading-tight">
+                Online Course Management System
+              </span>
+            </div>
+          </a>
+
+          <!-- Logo thu gọn -->
+          <a
+            href="dashboard-student.html"
+            id="sidebarLogoSmall"
+            class="hidden"
+          >
+            <img
+              src="../../../assets/logo.png"
+              alt="Logo UMT"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+          </a>
+
+          <!-- Nút thu gọn sidebar -->
+          <button
+            id="toggleSidebar"
+            class="text-white hover:text-gray-200 ml-auto"
+            title="Thu gọn / Mở rộng"
+          >
+            <span class="sr-only">Toggle sidebar</span>
+            ☰
+          </button>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto py-4 sidebar-nav">
+          <div class="px-3 space-y-1">
+            <p class="px-2 text-[0.7rem] uppercase tracking-wide text-blue-100/80">
+              Tổng quan
+            </p>
+            <a
+              href="dashboard-student.html"
+              class="nav-link"
+              data-nav="dashboard"
+            >
+              <span>Dashboard</span>
+            </a>
+            <a
+              href="student-overview.html"
+              class="nav-link"
+              data-nav="overview"
+            >
+              <span>Hồ sơ & Tổng quan</span>
+            </a>
+          </div>
+
+          <div class="mt-4 px-3 space-y-1">
+            <p class="px-2 text-[0.7rem] uppercase tracking-wide text-blue-100/80">
+              Học tập
+            </p>
+            <a
+              href="student-schedule.html"
+              class="nav-link"
+              data-nav="schedule"
+            >
+              <span>Lịch học</span>
+            </a>
+            <a
+              href="student-registration.html"
+              class="nav-link nav-link-active"
+              data-nav="registration"
+            >
+              <span>Ghi danh học phần</span>
+            </a>
+            <a href="academics.html" class="nav-link" data-nav="academics">
+              <span>Kết quả học tập</span>
+            </a>
+          </div>
+
+          <div class="mt-4 px-3 space-y-1">
+            <p class="px-2 text-[0.7rem] uppercase tracking-wide text-blue-100/80">
+              Thông tin
+            </p>
+            <a href="announcement.html" class="nav-link" data-nav="news">
+              <span>Thông báo</span>
+            </a>
+            <a href="eform.html" class="nav-link" data-nav="eform">
+              <span>E-Forms</span>
+            </a>
+          </div>
+        </nav>
+
+        <!-- Footer sidebar -->
+        <div class="border-t border-white/10 p-3 text-xs text-blue-100/80">
+          <p class="font-semibold">Student Portal</p>
+          <p class="text-[0.68rem]">
+            © 2025 Trường Đại học Quản lý và Công nghệ TP.HCM
+          </p>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="flex-1 flex flex-col min-w-0">
+        <!-- Header -->
+        <header
+          class="h-14 px-4 border-b border-slate-200 bg-white/80 backdrop-blur flex items-center justify-between"
+        >
+          <div class="flex items-center gap-3">
+            <button
+              id="mobileSidebarToggle"
+              class="md:hidden mr-2 text-slate-600 hover:text-slate-900"
+            >
+              ☰
+            </button>
+            <div>
+              <h1 class="text-sm font-semibold text-slate-900">
+                Ghi danh Học phần
+              </h1>
+              <p class="text-xs text-slate-500">
+                Chọn và quản lý các học phần trong học kỳ hiện tại
+              </p>
+            </div>
+          </div>
+
+          <!-- User info + avatar -->
+          <div class="flex items-center gap-3">
+            <div class="hidden sm:flex flex-col text-right">
+              <span
+                id="headerStudentName"
+                class="text-xs font-semibold text-slate-900"
+              >
+                Sinh viên
+              </span>
+              <span
+                id="headerStudentId"
+                class="text-[0.7rem] text-slate-500 tracking-wide"
+              >
+                Mã số
+              </span>
+            </div>
+
+            <!-- Avatar dropdown -->
+            <div class="relative">
+              <button
+                id="avatarButton"
+                class="h-8 w-8 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 text-xs font-semibold text-white flex items-center justify-center shadow-md"
+              >
+                <span id="avatarInitials">SV</span>
+              </button>
+
+              <div
+                id="avatarDropdown"
+                class="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-slate-200 py-1 text-xs text-slate-700 hidden z-20"
+              >
+                <a
+                  href="student-overview.html"
+                  class="px-3 py-2 hover:bg-slate-50 flex items-center justify-between"
+                >
+                  <span>Hồ sơ cá nhân</span>
+                  <span class="text-[0.65rem] text-slate-400">Shift + P</span>
+                </a>
+                <a
+                  href="../../../index/index.html"
+                  class="px-3 py-2 hover:bg-slate-50 text-red-600 flex items-center justify-between"
+                >
+                  <span>Đăng xuất</span>
+                  <span class="text-[0.65rem] text-slate-400">Ctrl + Q</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-4 md:p-6">
+          <!-- Thanh breadcrumb + term info -->
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4"
+          >
+            <nav class="text-xs text-slate-500">
+              <ol class="inline-flex items-center gap-1">
+                <li>
+                  <a
+                    href="dashboard-student.html"
+                    class="hover:text-slate-700 hover:underline"
+                    >Dashboard</a
+                  >
+                </li>
+                <li class="text-slate-400">/</li>
+                <li class="text-slate-700 font-medium">Ghi danh học phần</li>
+              </ol>
+            </nav>
+
+            <div class="flex items-center gap-3 text-xs">
+              <div
+                class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100"
+              >
+                <span class="font-semibold">Học kỳ hiện tại:</span>
+                <span id="currentTermLabel">Đang tải...</span>
+              </div>
+              <div
+                class="hidden md:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                <span id="registrationStatusLabel">Đang kiểm tra điều kiện...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hai cột: danh sách Đã đăng ký & Tra cứu -->
+          <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+            <!-- Cột trái: Đã đăng ký -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Các học phần đã đăng ký</h2>
+                  <p class="card-subtitle">
+                    Danh sách các lớp học bạn đang ghi danh trong học kỳ hiện tại
+                  </p>
+                </div>
+              </div>
+
+              <div class="card-body space-y-3">
+                <div
+                  id="registeredCoursesSummary"
+                  class="flex items-center justify-between text-xs text-slate-500"
+                >
+                  <p>
+                    Học phần:
+                    <span
+                      id="registeredCoursesCount"
+                      class="font-semibold text-slate-800"
+                      >0</span
+                    >
+                    &bull; Tổng tín chỉ:
+                    <span
+                      id="registeredCreditsTotal"
+                      class="font-semibold text-slate-800"
+                      >0</span
+                    >
+                  </p>
+                  <p class="hidden md:inline">
+                    * Trạng thái đăng ký có thể thay đổi khi bạn thêm/bớt môn.
+                  </p>
+                </div>
+
+                <div
+                  id="registeredCoursesEmpty"
+                  class="text-sm text-slate-500 italic hidden"
+                >
+                  Bạn chưa đăng ký học phần nào trong học kỳ này.
+                </div>
+
+                <!-- Bảng các lớp đã đăng ký -->
+                <div
+                  class="overflow-x-auto rounded-lg border border-slate-200 bg-white"
+                >
+                  <table class="min-w-full divide-y divide-slate-200 text-xs">
+                    <thead class="bg-slate-50">
+                      <tr>
+                        <th
+                          class="px-3 py-2 text-left font-medium text-slate-500 uppercase tracking-wide"
+                        >
+                          Lớp
+                        </th>
+                        <th
+                          class="px-3 py-2 text-left font-medium text-slate-500 uppercase tracking-wide"
+                        >
+                          Môn học
+                        </th>
+                        <th
+                          class="px-2 py-2 text-center font-medium text-slate-500 uppercase tracking-wide"
+                        >
+                          TC
+                        </th>
+                        <th
+                          class="px-3 py-2 text-left font-medium text-slate-500 uppercase tracking-wide"
+                        >
+                          Lịch học
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      id="registeredCoursesList"
+                      class="bg-white divide-y divide-slate-200"
+                    >
+                      <tr id="noRegisteredCourses">
+                        <td
+                          colspan="4"
+                          class="px-3 py-4 text-center text-slate-500 text-xs"
+                        >
+                          Đang tải danh sách đăng ký...
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Ghi chú -->
+                <p class="mt-1 text-[0.7rem] text-slate-400">
+                  * Vui lòng kiểm tra lại lịch học, phòng học và giảng viên trước
+                  khi chốt đăng ký.
+                </p>
+              </div>
+            </div>
+
+            <!-- Cột phải: Tra cứu & Đăng ký mới -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Tra cứu học phần</h2>
+                  <p class="card-subtitle">
+                    Tìm các học phần mở trong kỳ và đánh dấu các lớp muốn đăng ký
+                  </p>
+                </div>
+              </div>
+
+              <div class="card-body space-y-4">
+                <!-- Bộ lọc / Tìm kiếm -->
+                <div
+                  class="flex flex-col md:flex-row gap-3 items-stretch md:items-center"
+                >
+                  <div class="flex-1">
+                    <label
+                      for="searchInput"
+                      class="block text-xs font-medium text-slate-600 mb-1"
+                    >
+                      Tìm kiếm học phần
+                    </label>
+                    <input
+                      id="searchInput"
+                      type="text"
+                      placeholder="Mã môn, tên môn, tên giảng viên..."
+                      class="w-full px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+                    />
+                  </div>
+                  <div class="flex gap-2 items-end">
+                    <button
+                      id="searchButton"
+                      class="btn btn-secondary whitespace-nowrap"
+                    >
+                      Lọc danh sách
+                    </button>
+                    <button
+                      id="clearSearchButton"
+                      class="btn btn-ghost whitespace-nowrap"
+                    >
+                      Xóa lọc
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Bảng Tra cứu -->
+                <div class="mt-4 space-y-3">
+                  <!-- Tóm tắt số môn đã chọn -->
+                  <div
+                    class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-sm text-slate-600"
+                  >
+                    <p>
+                      Đã chọn
+                      <span
+                        id="registrationSelectedCount"
+                        class="font-semibold"
+                        >0</span
+                      >
+                      học phần, tổng
+                      <span
+                        id="registrationTotalCredits"
+                        class="font-semibold"
+                        >0</span
+                      >
+                      tín chỉ.
+                    </p>
+
+                    <button
+                      id="registrationSaveButton"
+                      class="btn btn-primary inline-flex items-center justify-center whitespace-nowrap"
+                    >
+                      Lưu đăng ký
+                    </button>
+                  </div>
+
+                  <!-- Hộp thông báo kết quả lưu -->
+                  <div
+                    id="registrationMessage"
+                    class="hidden text-sm rounded-md px-3 py-2"
+                    role="status"
+                  ></div>
+
+                  <!-- Danh sách học phần khả dụng -->
+                  <div
+                    id="registrationCoursesContainer"
+                    class="space-y-3 max-h-[32rem] overflow-y-auto pr-1"
+                  >
+                    <p class="text-sm text-gray-500 italic">
+                      Đang tải danh sách môn học...
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Entry JS (ES module) -->
+    <script type="module" src="../js/student-registration.js"></script>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CongTys>
+    <CongTy name="cty1">
+        <DiaChi> 
+            <SoNha> 18 </SoNha>
+            <Duong> Nguyen Hue </Duong>
+            <Quan> Q1 </Quan>
+            <ThanhPho> HCM </ThanhPho>
+        </DiaChi>
+
+        <ChiNhanh>
+            <TenChiNhanh> CN Sai Gon </TenChiNhanh>
+            <DiaDiem> 18 Nguyen Hue, Q1, HCM </DiaDiem>
+            <NhanViens>
+                <NhanVien laQuanLy="true">
+                    <BangCap> Thac Si </BangCap>
+                    <Ho> Pham Minh </Ho>
+                    <Ten> An </Ten>
+                    <Sdt> 0901234567 </Sdt>
+                    <Email> an.pham@cty1.com </Email>
+                </NhanVien>
+
+                <NhanVien laQuanLy="false">
+                    <BangCap> Dai Hoc </BangCap>
+                    <Ho> Vo Thi </Ho>
+                    <Ten> Lan </Ten>
+                    <Sdt> 0912345678 </Sdt>
+                    <Email> lan.vo@cty1.com </Email>
+                </NhanVien>
+
+                <NhanVien laQuanLy="false">
+                    <BangCap> Cao Dang </BangCap>
+                    <Ho> Nguyen Hoang </Ho>
+                    <Ten> Khang </Ten>
+                    <Sdt> 0933456789 </Sdt>
+                    <Email> khang.nguyen@cty1.com </Email>
+                </NhanVien>
+            </NhanViens>
+        </ChiNhanh>
+    </CongTy>
+
+    <CongTy name="cty2">
+        <DiaChi> 
+            <SoNha> 255 </SoNha>
+            <Duong> Vo Van Tan </Duong>
+            <Quan> Q3 </Quan>
+            <ThanhPho> HCM </ThanhPho>
+        </DiaChi>
+
+        <ChiNhanh>
+            <TenChiNhanh> CN Quan 3 </TenChiNhanh>
+            <DiaDiem> 255 Vo Van Tan, Q3, HCM </DiaDiem>
+            <NhanViens>
+                <NhanVien laQuanLy="true">
+                    <BangCap> Tien Si </BangCap>
+                    <Ho> Le Quang </Ho>
+                    <Ten> Huy </Ten>
+                    <Sdt> 0977001122 </Sdt>
+                    <Email> huy.le@cty2.com </Email>
+                </NhanVien>
+
+                <NhanVien laQuanLy="false">
+                    <BangCap> Thac Si </BangCap>
+                    <Ho> Tran Ngoc </Ho>
+                    <Ten> Mai </Ten>
+                    <Sdt> 0988112233 </Sdt>
+                    <Email> mai.tran@cty2.com </Email>
+                </NhanVien>
+
+                <NhanVien laQuanLy="false">
+                    <BangCap> Dai Hoc </BangCap>
+                    <Ho> Bui Gia </Ho>
+                    <Ten> Bao </Ten>
+                    <Sdt> 0966123456 </Sdt>
+                    <Email> bao.bui@cty2.com </Email>
+                </NhanVien>
+            </NhanViens>
+        </ChiNhanh>
+    </CongTy>
+
+    <CongTy name="cty3">
+        <DiaChi> 
+            <SoNha> 72 </SoNha>
+            <Duong> Tran Phu </Duong>
+            <Quan> Hai Chau </Quan>
+            <ThanhPho> Da Nang </ThanhPho>
+        </DiaChi>
+
+        <ChiNhanh>
+            <TenChiNhanh> CN Da Nang </TenChiNhanh>
+            <DiaDiem> 72 Tran Phu, Hai Chau, Da Nang </DiaDiem>
+            <NhanViens>
+                <NhanVien laQuanLy="true">
+                    <BangCap> Thac Si </BangCap>
+                    <Ho> Nguyen Thanh </Ho>
+                    <Ten> Tung </Ten>
+                    <Sdt> 0905678123 </Sdt>
+                    <Email> tung.nguyen@cty3.com </Email>
+                </NhanVien>
+
+                <NhanVien laQuanLy="false">
+                    <BangCap> Dai Hoc </BangCap>
+                    <Ho> Hoang Thi </Ho>
+                    <Ten> Thao </Ten>
+                    <Sdt> 0916789234 </Sdt>
+                    <Email> thao.hoang@cty3.com </Email>
+                </NhanVien>
+
+                <NhanVien laQuanLy="false">
+                    <BangCap> Cao Dang </BangCap>
+                    <Ho> Do Minh </Ho>
+                    <Ten> Quan </Ten>
+                    <Sdt> 0937890345 </Sdt>
+                    <Email> quan.do@cty3.com </Email>
+                </NhanVien>
+            </NhanViens>
+        </ChiNhanh>
+    </CongTy>
+</CongTys>

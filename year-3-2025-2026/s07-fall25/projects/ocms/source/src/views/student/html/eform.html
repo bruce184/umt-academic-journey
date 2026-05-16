@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eForms Sinh viên - OCMS</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Inter -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    />
+
+    <!-- Layout chung cho tất cả roles -->
+    <link rel="stylesheet" href="../../common/layout.css" />
+
+    <!-- Theme & component riêng cho Student -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+
+  <body class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="sidebar w-64 text-white p-4 flex flex-col justify-between shadow-lg"
+      style="background-color: var(--color-primary)"
+    >
+      <div>
+        <!-- Logo + toggle -->
+        <div class="flex items-center justify-between mb-6">
+          <!-- Logo lớn -->
+          <a
+            href="dashboard-student.html"
+            id="sidebarLogo"
+            class="flex items-center space-x-2"
+          >
+            <img
+              src="../../../assets/logo.png"
+              alt="Logo UMT"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+            <span
+              id="sidebarLogoText"
+              class="font-bold text-lg sidebar-text"
+            >
+              OCMS
+            </span>
+          </a>
+
+          <!-- Logo nhỏ (khi thu gọn) -->
+          <a
+            href="dashboard-student.html"
+            id="sidebarLogoSmall"
+            class="hidden"
+          >
+            <img
+              src="../../../assets/logo.png"
+              alt="Logo UMT"
+              class="h-10 w-auto bg-white p-1 rounded-md shadow-md"
+            />
+          </a>
+
+          <!-- Nút thu gọn sidebar -->
+          <button
+            id="toggleSidebar"
+            class="text-white hover:text-gray-200 flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Menu Items -->
+        <nav class="space-y-2">
+          <a
+            href="dashboard-student.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+              />
+            </svg>
+            <span class="sidebar-text">Dashboard</span>
+          </a>
+
+          <a
+            href="student-registration.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H5a1 1 0 110-2h1V4zm2 2v1h8V6H6zm8 3v1H6V9h8z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">Enrollment (Ghi danh)</span>
+          </a>
+
+          <a
+            href="student-schedule.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">My Schedule (Lịch học)</span>
+          </a>
+
+          <a
+            href="./academics.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 005.5 16c1.255 0 2.443-.29 3.5-.804V4.804zM14.5 4A7.969 7.969 0 0011 4.804v10A7.968 7.968 0 0014.5 16c1.255 0 2.443-.29 3.5-.804v-10A7.969 7.969 0 0014.5 4z"
+              />
+            </svg>
+            <span class="sidebar-text">Academics (Học vụ)</span>
+          </a>
+
+          <a
+            href="#"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10 20a10 10 0 110-20 10 10 0 010 20zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V9z"
+              />
+            </svg>
+            <span class="sidebar-text">Financials (Tài chính)</span>
+          </a>
+
+          <a
+            href="./announcement.html"
+            class="sidebar-item flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 12.586V8a6 6 0 00-6-6zm-4 8a4 4 0 118 0v1H6V10z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">Announcements (Thông báo)</span>
+          </a>
+
+          <!-- eForms: trang hiện tại -->
+          <a
+            href="./eform.html"
+            class="sidebar-item active flex items-center space-x-3 p-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h6a2 2 0 001.414-.586l4-4A2 2 0 0016 11V5a2 2 0 00-2-2H4zm7 10a1 1 0 011-1h2.586L11 16.586V13z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sidebar-text">eForms (Biểu mẫu)</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Đăng xuất -->
+      <div class="border-t border-white/10 pt-4">
+        <a
+          href="../../../index/index.html"
+          class="sidebar-item flex items-center space-x-3 p-3"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span class="sidebar-text">Sign Out (Đăng xuất)</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 h-screen overflow-y-auto bg-gray-50">
+      <!-- Header -->
+      <header class="bg-white shadow-md">
+        <div
+          class="h-16 flex items-center justify-between px-4 md:px-6 lg:px-8 gap-4"
+        >
+          <!-- Breadcrumb -->
+          <div class="flex flex-col">
+            <div class="text-sm">
+              <span class="text-gray-500">Home /</span>
+              <span class="font-semibold text-gray-800">eForms</span>
+            </div>
+          </div>
+
+          <!-- Search + Avatar -->
+          <div class="flex items-center gap-4">
+            <!-- Search -->
+            <div class="hidden sm:block">
+              <div class="relative">
+                <input
+                  id="headerSearch"
+                  type="text"
+                  placeholder="Search..."
+                  class="w-56 rounded-full border border-gray-200 pl-9 pr-3 py-1.5
+                         text-sm focus:outline-none focus:ring-2
+                         focus:ring-[var(--color-primary-light)]
+                         focus:border-transparent"
+                />
+                <span class="absolute left-3 top-1.5 text-gray-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="11" cy="11" r="7" />
+                    <line x1="16" y1="16" x2="21" y2="21" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Avatar Menu -->
+            <div class="relative">
+              <button
+                id="avatarButton"
+                class="flex items-center space-x-2 focus:outline-none
+                       rounded-full border border-gray-200 px-2 py-1.5 hover:bg-gray-50"
+              >
+                <img
+                  class="h-9 w-9 rounded-full object-cover shadow"
+                  src="https://placehold.co/100x100/E6F2FF/007ACC?text=Huy"
+                  alt="Avatar"
+                />
+                <div class="text-left hidden md:block">
+                  <div class="font-semibold text-gray-700 text-sm">
+                    Hà Quang Huy
+                  </div>
+                  <div class="text-xs text-gray-500">
+                    MSSV: 2302700150
+                  </div>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-gray-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              <!-- Dropdown Menu -->
+              <div
+                id="avatarDropdown"
+                class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl
+                       overflow-hidden z-20 hidden transition-all duration-200 ease-out
+                       border border-gray-100"
+              >
+                <div class="p-4 border-b border-gray-200">
+                  <h4 class="font-semibold text-gray-800">Hà Quang Huy</h4>
+                  <p class="text-sm text-gray-500">
+                    huy.2302700150@umt.edu.vn
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="block px-4 py-3 text-gray-700 hover:bg-gray-50
+                         transition-colors duration-150"
+                >
+                  My Profile (Hồ sơ)
+                </a>
+                <a
+                  href="#"
+                  class="block px-4 py-3 text-gray-700 hover:bg-gray-50
+                         transition-colors duration-150"
+                >
+                  Inbox (Tin nhắn)
+                </a>
+                <a
+                  href="../../../index/index.html"
+                  class="block px-4 py-3 text-red-600 font-medium hover:bg-gray-50
+                         transition-colors duration-150 border-t border-gray-200"
+                >
+                  Sign Out (Đăng xuất)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <div class="p-6 md:p-8 space-y-6">
+        <div class="space-y-2">
+          <h1 class="text-3xl font-bold text-gray-800">
+            📝 eForms (Biểu mẫu điện tử)
+          </h1>
+          <p class="text-sm text-gray-600 max-w-2xl">
+            Gửi các yêu cầu học vụ (xin nghỉ học, phúc khảo, xác nhận sinh viên, ...)
+            trực tuyến tới Phòng/Bộ phận phụ trách và theo dõi trạng thái xử lý
+            của từng eForm.
+          </p>
+        </div>
+
+        <!-- Tạo eForm mới + note -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Form tạo eForm -->
+          <section class="lg:col-span-2">
+            <div class="bg-white rounded-lg shadow-md border border-gray-200 p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                <h2 class="text-lg font-semibold text-gray-800">
+                  Tạo eForm mới
+                </h2>
+                <span class="inline-flex items-center text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+                  Live · Sử dụng API backend
+                </span>
+              </div>
+
+              <form id="eformCreateForm" class="space-y-4">
+                <!-- Loại yêu cầu -->
+                <div>
+                  <label
+                    for="eformType"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Loại yêu cầu
+                  </label>
+                  <select
+                    id="eformType"
+                    name="type"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                           focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+                    required
+                  >
+                    <option value="">-- Chọn loại eForm --</option>
+                    <option value="ABSENCE">Xin nghỉ học (có phép)</option>
+                    <option value="GRADE_REVIEW">Phúc khảo điểm</option>
+                    <option value="CERTIFICATE">
+                      Xác nhận sinh viên / Giấy tờ hành chính
+                    </option>
+                    <option value="OTHER">Khác</option>
+                  </select>
+                </div>
+
+                <!-- Tiêu đề -->
+                <div>
+                  <label
+                    for="eformTitle"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Tiêu đề
+                  </label>
+                  <input
+                    id="eformTitle"
+                    name="title"
+                    type="text"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                           focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+                    placeholder="Ví dụ: Xin nghỉ học môn Operating Systems ngày 05/01"
+                    required
+                  />
+                </div>
+
+                <!-- Nội dung chi tiết -->
+                <div>
+                  <label
+                    for="eformContent"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Nội dung chi tiết
+                  </label>
+                  <textarea
+                    id="eformContent"
+                    name="content"
+                    rows="5"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                           focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+                    placeholder="Trình bày rõ lý do, thời gian, môn học, lớp, giảng viên,..."
+                    required
+                  ></textarea>
+                </div>
+
+                <!-- Footer form -->
+                <div class="flex items-center justify-between pt-2">
+                  <p
+                    id="eformMessage"
+                    class="text-sm hidden"
+                  ></p>
+                  <button
+                    type="submit"
+                    id="eformSubmitButton"
+                    class="inline-flex items-center px-4 py-2 border border-transparent
+                           text-sm font-medium rounded-md shadow-sm text-white
+                           bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)]
+                           focus:outline-none focus:ring-2 focus:ring-offset-2
+                           focus:ring-[var(--color-primary)]"
+                  >
+                    Gửi eForm
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <!-- Note / hướng dẫn -->
+          <aside>
+            <div class="bg-white rounded-lg shadow-md border border-gray-200 p-5 space-y-3">
+              <h3 class="text-sm font-semibold text-gray-800">
+                Hướng dẫn điền eForm
+              </h3>
+              <ul class="list-disc pl-5 text-xs text-gray-600 space-y-1">
+                <li>Chọn đúng <strong>loại yêu cầu</strong> để hệ thống chuyển tới đúng bộ phận.</li>
+                <li>Tiêu đề nên ngắn gọn, dễ hiểu (môn học, ngày, loại yêu cầu).</li>
+                <li>Nội dung cần đầy đủ: lý do, thời gian, mã lớp, mã môn, giảng viên phụ trách,...</li>
+                <li>Kiểm tra chính tả &amp; thông tin trước khi gửi.</li>
+              </ul>
+              <p class="text-xs text-gray-500 pt-1">
+                Trang này hiện sử dụng API backend thực; dữ liệu eForm được lưu trên server.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Lịch sử eForms -->
+        <section class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-800">
+              📂 Lịch sử eForms đã gửi
+            </h2>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md border border-gray-200">
+            <div class="px-6 py-3 border-b border-gray-100">
+              <p class="text-xs text-gray-500">
+                Danh sách các eForm bạn đã gửi gần đây.
+              </p>
+            </div>
+            <div id="eformHistoryContainer" class="divide-y divide-gray-100">
+              <div class="px-6 py-4 text-sm text-gray-500 italic">
+                Đang tải lịch sử eForm...
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Entry JS (ES module) -->
+    <script type="module" src="../js/eform-student.js"></script>
+  </body>
+</html>

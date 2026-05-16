@@ -1,0 +1,158 @@
+.switch-account-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 360;
+    background: rgba(9, 12, 16, 0.76);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.switch-account-modal {
+    position: relative;
+    width: min(100%, 700px);
+    min-height: 520px;
+    padding: 54px 32px 44px;
+    border-radius: 30px;
+    background: #24262d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 36px 90px rgba(0, 0, 0, 0.46);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.switch-account-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    background: transparent;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.switch-account-brand {
+    margin-bottom: 34px;
+    color: #fff;
+    font-family: "Segoe Script", "Brush Script MT", cursive;
+    font-size: 58px;
+    line-height: 1;
+}
+
+.switch-account-form {
+    width: min(100%, 340px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.switch-account-input {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    font-size: 14px;
+}
+
+.switch-account-input::placeholder {
+    color: #9aa4b2;
+}
+
+.switch-account-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 10px;
+    color: #fff;
+    font-size: 14px;
+    align-self: flex-start;
+}
+
+.switch-account-checkbox input {
+    width: 22px;
+    height: 22px;
+    accent-color: #4f46e5;
+}
+
+.switch-account-submit {
+    width: 100%;
+    min-height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #5865f2 0%, #4854d1 100%);
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.switch-account-submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.switch-account-forgot {
+    margin-top: 22px;
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.switch-account-error {
+    width: min(100%, 340px);
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(239, 68, 68, 0.12);
+    color: #fecaca;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+    .switch-account-modal {
+        min-height: auto;
+        padding: 42px 22px 34px;
+    }
+
+    .switch-account-brand {
+        font-size: 46px;
+    }
+}
+
+:root[data-theme="light"] .switch-account-overlay {
+    background: rgba(15, 23, 42, 0.34);
+}
+
+:root[data-theme="light"] .switch-account-modal {
+    background: var(--surface);
+    border-color: var(--border);
+    box-shadow: var(--shadow-lg);
+}
+
+:root[data-theme="light"] .switch-account-close,
+:root[data-theme="light"] .switch-account-brand,
+:root[data-theme="light"] .switch-account-checkbox,
+:root[data-theme="light"] .switch-account-forgot {
+    color: var(--text-main);
+}
+
+:root[data-theme="light"] .switch-account-input {
+    border-color: var(--border);
+    background: var(--surface-soft);
+    color: var(--text-main);
+}
+
+:root[data-theme="light"] .switch-account-input::placeholder {
+    color: var(--text-secondary);
+}

@@ -1,0 +1,87 @@
+.follow-list-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.follow-list-container h2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.follow-list {
+    background: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+}
+
+.follow-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #efefef;
+}
+
+.follow-list-item:last-child {
+    border-bottom: none;
+}
+
+.follow-user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #262626;
+    flex: 1;
+}
+
+.follow-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.follow-username {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.follow-display-name {
+    color: #8e8e8e;
+    font-size: 14px;
+}
+
+.follow-btn {
+    padding: 5px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    background: #0095f6;
+    color: white;
+    border: none;
+}
+
+.follow-btn.following {
+    background: white;
+    color: #262626;
+    border: 1px solid #dbdbdb;
+}
+
+.follow-list-loading,
+.follow-list-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #8e8e8e;
+}
+
+.follow-you-badge {
+    font-size: 0.9rem;
+    color: #8e8e8e;
+    font-weight: 600;
+    padding: 8px 16px;
+}

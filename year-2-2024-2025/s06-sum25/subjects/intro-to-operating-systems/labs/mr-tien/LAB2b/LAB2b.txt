@@ -1,0 +1,28 @@
+# TASK 1
+1. "mkdir my_project"
+2. "cd /my_project" -> "mkdir src docs"
+3. "cd src" -> "touch index.html"
+4. "cat > index.html <<"EOF" <...contents...> EOF" 
+5. "cd .." -> "cd docs" -> "touch README.md"
+6. "mv -i README.md ../src/"
+7. "mv index.htmnl home.html" 
+8. "cp home.html backup_home.html"
+9. "mv -i backup_home.html ../docs/"
+10. "cd .." -> "ls -R"
+11. "cd src" -> "more README.md" # I have added some contents into this file 
+
+# TASK 2
+12. "cd .." -> root dir -> ""mkdir Hoang"
+13. "cd Hoang"
+14. "touch <3 file>"
+15. "who > TestUsr.txt"
+16. "ls -R > TestCon.txt"
+17. "cat <2 file> > TestResult.txt"
+18. "mkdir ExeShell" 
+19. "cp <3 files> ExeShell/" 
+20. "ls -a | sort -r"
+21. "cd .." -> Hoang dir -> "touch TestDoc.txt" -> "cat > <file_name> <<"EOF" ... EOF" -> "more TestDoc.txt"
+
+# TASK 3
+
+

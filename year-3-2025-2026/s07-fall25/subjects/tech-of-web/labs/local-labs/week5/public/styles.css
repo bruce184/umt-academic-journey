@@ -1,0 +1,79 @@
+o /*
+  Improved styles for Week5 lab
+  - clearer typography, spacing and visual hierarchy
+  - banner, nav and card styling tuned to match the PDF aesthetic
+*/
+
+/* Basic reset & typography */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+  color: #102a43;
+  background: linear-gradient(180deg,#f7fbff 0%, #ebf6ff 100%);
+}
+
+:root {
+  --site-width: 1100px;
+  --gutter-x: 20px;
+  --accent: #0b6b8a; /* deep cyan/blue */
+  --accent-2: #2d8f6f; /* greenish for CTA */
+  --muted: #6b7c87;
+}
+
+/* Shells */
+.site-shell { width: 100%; }
+.site-inner { max-width: var(--site-width); margin: 0 auto; padding: 0 var(--gutter-x); box-sizing: border-box; }
+.container { width: 100%; }
+
+/* Header / navbar */
+.app-navbar { display: flex; align-items: center; gap: 1rem; }
+.app-navbar .nav-link { color: var(--muted); padding: 8px 12px; font-weight: 500; }
+.app-navbar .nav-link:hover { color: #0b2f3a; text-decoration: none; background: rgba(255,255,255,0.6); border-radius: 8px; }
+.header-shell { padding: 12px 0; }
+/* Header: yellow theme */
+.header-shell .app-navbar { background: linear-gradient(180deg,#fff9d6,#fff3b0); border-radius: 10px; padding: 10px; border: 1px solid rgba(0,0,0,0.04); }
+
+/* Nav icon block */
+.nav-gradient { background: #e0a800; color: #fff; padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; }
+.nav-gradient .bi { font-size: 1.25rem; }
+
+/* Banner / page title */
+.banner-shell { padding: 18px 0; }
+.page-banner { background: linear-gradient(180deg,#e6f3fb,#eaf7ff); padding: 14px; border-radius: 12px; border: 1px solid rgba(11,107,138,0.06); }
+.page-title { margin: 0; font-size: 1.4rem; color: var(--accent); font-weight: 700; }
+
+/* Content */
+.content-shell { padding: 20px 0 36px 0; }
+.content-shell .site-inner > .container { background: transparent; padding: 0; }
+
+/* Footer */
+.footer-shell .footer-bar { background: #f0f0f0; color: #6b6b6b; border-top: 1px solid rgba(0,0,0,0.06); padding: 18px 0; margin-top: 18px; }
+
+/* Responsive adjustments */
+@media (max-width: 992px) { .site-inner { padding-left: 16px; padding-right: 16px; } }
+@media (max-width: 576px) { .site-inner { padding-left: 10px; padding-right: 10px; } }
+
+/* Signup card */
+.signup-page { min-height: 70vh; display: block; }
+.signup-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 10px 30px rgba(11,26,40,0.06); border: 1px solid rgba(11,26,40,0.04); max-width: 720px; margin: 18px auto; }
+.signup-title { font-weight: 800; letter-spacing: 0.3px; font-size: 1.5rem; color: var(--accent); margin-bottom: 12px; }
+.form-control { border-radius: 8px; }
+.btn-register { background: var(--accent-2); border-color: var(--accent-2); color: #fff; padding: 10px 16px; border-radius: 8px; }
+.btn-register:hover { background: #206a4f; border-color: #206a4f; }
+
+/* Validation visuals */
+.form-control.is-valid { border-color: #28a745; box-shadow: 0 0 0 0.05rem rgba(40,167,69,0.08); }
+.form-control.is-invalid { border-color: #dc3545; box-shadow: 0 0 0 0.05rem rgba(220,53,69,0.06); }
+
+/* Calculator */
+.calc-card { background: #fff; border-radius: 12px; padding: 22px; box-shadow: 0 10px 24px rgba(11,26,40,0.04); border: 1px solid rgba(11,26,40,0.03); max-width: 640px; margin: 18px auto; }
+.calc-title { font-weight: 700; font-size: 1.25rem; color: var(--accent); margin-bottom: 10px; }
+.calc-card .form-control, .calc-card .form-select { border-radius: 8px; }
+
+/* Small helpers */
+.lead { color: var(--muted); }
+.shadow-soft { box-shadow: 0 6px 18px rgba(11,26,40,0.05); }
+
+
+

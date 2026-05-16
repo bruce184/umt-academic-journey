@@ -1,0 +1,22 @@
+version: '1.0'
+services:
+  postgres:
+    image: postgres:16
+    container_name: my_postgres1
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: mydb
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      lanneten:
+        ipv4_address: 192.168.100.2
+
+networks:
+  lanneten:
+    external: true
+

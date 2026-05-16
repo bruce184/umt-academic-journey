@@ -1,0 +1,25 @@
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"   # host:container
+    volumes:
+      - ./docker/data:/var/lib/postgresql
+    env_file:
+      - .env.docker   # dùng chung env cho db
+    restart: unless-stopped
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    ports:
+      - "5000:5000"   # host:container
+    env_file:
+      - .env.docker   
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - db

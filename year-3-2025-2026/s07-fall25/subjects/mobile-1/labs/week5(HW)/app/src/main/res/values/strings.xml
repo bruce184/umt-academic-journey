@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">week4</string>
+    <string name="back">Back</string>
+    <string name="desc_power_button">Power flashlight</string>
+</resources>

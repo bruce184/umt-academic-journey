@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootFlash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFFFF"
+    android:keepScreenOn="true"
+    android:fitsSystemWindows="true">
+
+    <!-- Thanh button màu: hạ xuống và cho liền kề -->
+    <HorizontalScrollView
+        android:id="@+id/colorScroll"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:fillViewport="true"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:id="@+id/colorStrip"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="0dp"/>
+    </HorizontalScrollView>
+
+    <!-- Back về Menu -->
+    <Button
+        android:id="@+id/btnBackMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="24dp" />
+
+    <!-- Power -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/desc_power_button"
+        app:srcCompat="@drawable/ic_power"
+        app:tint="@android:color/white"
+        app:backgroundTint="#4CAF50" />
+</FrameLayout>

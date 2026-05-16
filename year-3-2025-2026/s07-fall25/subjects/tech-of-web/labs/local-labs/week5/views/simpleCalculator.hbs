@@ -1,0 +1,86 @@
+<section class="calc-page">
+  <div class="site-inner">
+    <div class="calc-card">
+      <div class="calc-title mb-3">Simple Calculator</div>
+      <div class="card-body">
+        <div class="row g-2 align-items-center mb-3">
+          <div class="col">
+            <label for="x" class="form-label">Number X</label>
+            <input id="x" type="number" step="any" class="form-control" placeholder="Enter a number">
+          </div>
+          <div class="col-auto">
+            <label for="op" class="form-label">Op</label>
+            <select id="op" class="form-select">
+              <option value="+">+</option>
+              <option value="-">−</option>
+              <option value="*">×</option>
+              <option value="/">÷</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="y" class="form-label">Number Y</label>
+            <input id="y" type="number" step="any" class="form-control" placeholder="Enter a number">
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button id="btnCalc" class="btn btn-primary">Calculate</button>
+          <button id="btnClear" class="btn btn-outline-secondary">Clear</button>
+        </div>
+
+        <hr class="my-4">
+
+        <p class="lead mb-0">
+          Result:
+          <span id="result" class="fw-bold text-primary">—</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = (sel) => document.querySelector(sel);
+  const x  = $('#x');
+  const y  = $('#y');
+  const op = $('#op');
+  const out = $('#result');
+
+  $('#btnCalc').addEventListener('click', () => {
+    const a = parseFloat(x.value);
+    const b = parseFloat(y.value);
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+      out.textContent = 'Please enter valid numbers';
+      out.classList.replace('text-primary','text-danger');
+      return;
+    }
+
+    let r;
+    switch (op.value) {
+      case '+': r = a + b; break;
+      case '-': r = a - b; break;
+      case '*': r = a * b; break;
+      case '/':
+        if (b === 0) {
+          out.textContent = 'Cannot divide by zero';
+          out.classList.replace('text-primary','text-danger');
+          return;
+        }
+        r = a / b; break;
+    }
+    out.classList.remove('text-danger');
+    out.classList.add('text-primary');
+    out.textContent = String(r);
+  });
+
+  $('#btnClear').addEventListener('click', () => {
+    x.value = '';
+    y.value = '';
+    op.value = '+';
+    out.textContent = '—';
+    out.classList.remove('text-danger');
+    out.classList.add('text-primary');
+  });
+});
+</script>

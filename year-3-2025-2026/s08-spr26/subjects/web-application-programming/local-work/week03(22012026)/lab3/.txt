@@ -1,0 +1,12 @@
+model: liên quan đến db (lưu trữ dữ liệu)
+contollers: là đứa điều hướng cho hệ thống
+view: đây là FE của hệ thống, có thể chia thành nhiều nhóm nhỏ: public, partials,...
+middlewares: là những bước trung gian đảm bảo chất lượng của hệ thống (query, input data, error, response, validate, auth, requestID):  
+    validate có thể tách thành folder riêng nếu số lượng nhiều 
+routers: là các hướng điều phối (URL) của hệ thống, ví dụ: chọn profile, url là: /users/profile/...
+utils: hỗ trợ cho middlewares (rõ ràng hơn)  
+services: khi có quá nhiều chức năng, tách thành 1 folder riêng biệt services để hỗ trợ controllers
+.env: là các variables môi trường (bảo mật)
+server.js: tạo môi trường cho app.js nhận query và shutdown hệ thống 
+app.js: tách ra từ server.js để thực hiện logic 
+package: chứa các dependencies (phiên bản của các thư viện) của hệ thống 

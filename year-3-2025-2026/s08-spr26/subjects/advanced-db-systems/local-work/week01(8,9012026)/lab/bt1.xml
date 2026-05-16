@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding ="UTF-8"?>
+
+<DanhSachHocSinh>
+    <HocSinh MS="HS001">
+        <HoTen>Nguyen Van A</HoTen>
+        <NgaySinh>2006-05-15</NgaySinh>
+        <NoiSinh>HCM</NoiSinh>
+    </HocSinh>
+
+    <HocSinh MS="HS002">
+        <HoTen>Tran Thi B</HoTen>
+        <NgaySinh>2005-08-20</NgaySinh>
+        <NoiSinh>HN</NoiSinh>
+    </HocSinh>
+
+    <HocSinh MS="HS003"> 
+        <HoTen>Le Van C</HoTen>
+        <NgaySinh>2006-12-01</NgaySinh>
+        <NoiSinh>HP</NoiSinh>
+    </HocSinh>
+</DanhSachHocSinh>

@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Custom utility classes cho bài lab */
+@layer utilities {
+  .box {
+    @apply inline-block text-[8rem] border-0 rounded-[5px] w-[1.5em] h-[1.5em] text-center leading-[1.5em] mr-1 mt-1;
+  }
+
+  .box:hover {
+    box-shadow: 1px 2px 2px gray;
+    cursor: pointer;
+  }
+
+  .bg-green {
+    background: linear-gradient(to top, #56b870, #a5c956);
+  }
+
+  .bg-blue {
+    background: linear-gradient(to top, #7abcff, #60abf8 44%, #4096ee);
+  }
+
+  .bg-red {
+    background: linear-gradient(to top, #c655be, #ca2289 44%, #cf0404);
+  }
+
+  .bg-yellow {
+    background: linear-gradient(to top, #ffd65e 0%, #febf04 100%);
+  }
+
+  .bg-purple {
+    background: linear-gradient(to left, #cb60b3 0%, #ad1283 50%, #de47ac 100%);
+  }
+}

@@ -12,3 +12,30 @@ build/
 *.pdb
 .DS_Store
 Thumbs.db
+
+# Local IDE/cache/state
+.idea/
+.vscode/
+.gradle/
+.dart_tool/
+coverage/
+# Compiled artifacts
+bin/
+obj/
+target/
+*.dll
+*.exe
+*.msi
+# Raw course/archive material
+*.pdf
+*.ppt
+*.pptx
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.rar
+*.7z
+*.sqlite
+*.sqlite3
+.vs/

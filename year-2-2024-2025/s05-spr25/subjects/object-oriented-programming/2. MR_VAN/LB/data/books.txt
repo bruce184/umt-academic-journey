@@ -1,0 +1,6 @@
+001|C++ programming|A|I.T|0
+002|VietNam History|B|History|1
+003|Design|C|Architect|1
+004|Math|D|Math|0
+005|Basketball Basic|E|Sports|1
+006|Bio|F|Science|0

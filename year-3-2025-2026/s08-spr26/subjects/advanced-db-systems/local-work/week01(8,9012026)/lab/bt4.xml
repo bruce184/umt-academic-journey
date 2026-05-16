@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NganHang>
+    <TaiKhoans>
+        <TaiKhoan name="tk1"> 
+            <MaiTaiKhoan> 123456789</MaiTaiKhoan>
+            <ChiNhanh> CN1 </ChiNhanh>
+            <SoDu> 1100000 </SoDu>
+        </TaiKhoan>
+
+        <TaiKhoan name="tk2"> 
+            <MaiTaiKhoan> 123456790</MaiTaiKhoan>
+            <ChiNhanh> CN2 </ChiNhanh>
+            <SoDu> 1200000 </SoDu>
+        </TaiKhoan>
+
+        <TaiKhoan name="tk4"> 
+            <MaiTaiKhoan> 123456791</MaiTaiKhoan>
+            <ChiNhanh> CN3 </ChiNhanh>
+            <SoDu> 1300000 </SoDu>
+        </TaiKhoan>
+    </TaiKhoans>
+
+    <KhangHangs>
+        <KhachHang name="kh1"> 
+            <SoCmd> 012345678 </SoCmd>
+            <HoTen> Nguyen Van A </HoTen>
+            <DiaChi> 123 Le Loi, Q1, HCM </DiaChi>
+        </KhachHang>
+
+        <KhachHang name="kh2">  
+            <SoCmd> 012345679 </SoCmd>
+            <HoTen> Nguyen Van B </HoTen>
+            <DiaChi> 124 Le Loi, Q1, HCM </DiaChi>
+        </KhachHang>
+
+        <KhachHang name="kh3"> 
+            <SoCmd> 012345680 </SoCmd>
+            <HoTen> Nguyen Van C </HoTen>
+            <DiaChi> 125 Le Loi, Q1, HCM </DiaChi>
+        </KhachHang>
+    </KhangHangs>   
+
+    < 
+    
+
+    <TaiKhoanKhachHang name="tk_kh1"> Tai khoan khach hang: ma tai khoan, so cmd </TaiKhoanKhachHang>
+</NganHang>

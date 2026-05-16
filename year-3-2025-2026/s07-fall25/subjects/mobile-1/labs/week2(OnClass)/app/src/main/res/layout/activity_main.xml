@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/msgET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="your msg" />
+
+    <Button
+        android:id="@+id/exitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EXIT"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:id="@+id/contentTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transitioning States..."
+        android:layout_marginTop="12dp" />
+</LinearLayout>

@@ -1,0 +1,147 @@
+{{!-- views/product/productsAjaxPaging.hbs --}}
+<h3 class="mb-3">AJAX Pagination</h3>
+
+<div id="ajaxProductList" class="row row-cols-1 row-cols-md-3 g-4">
+    {{#each products}}
+        <div class="col">
+            <div class="card h-100 shadow">
+                <div class="ratio ratio-1x1">
+                    <img src="/imgs/p{{ this.id }}.png"
+                         class="img-card-top"
+                         alt="{{ this.title }}">
+                </div>
+                <div class="card-body mt-2">
+                    <h4 class="card-title">{{ this.title }}</h4>
+                    <p class="card-text text-truncate mt-3">{{ this.description }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="btn btn-primary" href="/products/{{ this.id }}">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<nav aria-label="AJAX Product pages" class="mt-4">
+    <ul id="ajaxPagination" class="pagination justify-content-center">
+        {{!-- Previous --}}
+        <li class="page-item {{#if paging.hasPrev}}{{else}}disabled{{/if}}">
+            <a class="page-link"
+               href="#"
+               data-page="{{paging.prevPage}}"
+               aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        {{!-- Page numbers --}}
+        {{#range 1 paging.totalPages}}
+            <li class="page-item {{#if (eq this ../paging.page)}}active{{/if}}">
+                <a class="page-link" href="#" data-page="{{this}}">{{this}}</a>
+            </li>
+        {{/range}}
+
+        {{!-- Next --}}
+        <li class="page-item {{#if paging.hasNext}}{{else}}disabled{{/if}}">
+            <a class="page-link"
+               href="#"
+               data-page="{{paging.nextPage}}"
+               aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const productList = document.getElementById('ajaxProductList');
+        const pagination = document.getElementById('ajaxPagination');
+
+        pagination.addEventListener('click', async (event) => {
+            const link = event.target.closest('a.page-link');
+            if (!link) return;
+
+            const page = link.dataset.page;
+            if (!page) return;
+
+            event.preventDefault();
+
+            try {
+                const response = await fetch(`/ajax/products/${page}`);
+                if (!response.ok) {
+                    console.error('Request failed');
+                    return;
+                }
+
+                const data = await response.json();
+                const products = data.products;
+                const paging = data.paging;
+
+                // Cập nhật danh sách sản phẩm
+                productList.innerHTML = products.map((p) => `
+                    <div class="col">
+                        <div class="card h-100 shadow">
+                            <div class="ratio ratio-1x1">
+                                <img src="/imgs/p${p.id}.png"
+                                     class="img-card-top"
+                                     alt="${p.title}">
+                            </div>
+                            <div class="card-body mt-2">
+                                <h4 class="card-title">${p.title}</h4>
+                                <p class="card-text text-truncate mt-3">${p.description}</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a class="btn btn-primary" href="/products/${p.id}">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Cập nhật pagination
+                const totalPages = paging.totalPages;
+                const currentPage = paging.page;
+
+                let html = '';
+
+                const hasPrev = currentPage > 1;
+                const prevPage = currentPage - 1;
+                html += `
+                    <li class="page-item ${hasPrev ? '' : 'disabled'}">
+                        <a class="page-link"
+                           href="#"
+                           data-page="${prevPage}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                `;
+
+                for (let i = 1; i <= totalPages; i++) {
+                    html += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" data-page="${i}">${i}</a>
+                        </li>
+                    `;
+                }
+
+                const hasNext = currentPage < totalPages;
+                const nextPage = currentPage + 1;
+                html += `
+                    <li class="page-item ${hasNext ? '' : 'disabled'}">
+                        <a class="page-link"
+                           href="#"
+                           data-page="${nextPage}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                `;
+
+                pagination.innerHTML = html;
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    });
+</script>

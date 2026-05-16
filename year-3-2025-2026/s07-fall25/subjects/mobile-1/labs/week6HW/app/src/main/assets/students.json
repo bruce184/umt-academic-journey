@@ -1,0 +1,7 @@
+[
+  {"id":1, "name":"Alice Nguyen", "dob":"2004-05-10", "gender":"Female", "className":"IT01", "gpa":3.5},
+  {"id":2, "name":"Bob Tran",     "dob":"2004-08-21", "gender":"Male",   "className":"IT02", "gpa":3.2},
+  {"id":3, "name":"Chi Pham",     "dob":"2003-12-02", "gender":"Female", "className":"IT01", "gpa":3.9},
+  {"id":4, "name":"Duc Le",       "dob":"2004-03-18", "gender":"Male",   "className":"IT03", "gpa":2.8},
+  {"id":5, "name":"Emily Vo",     "dob":"2004-11-30", "gender":"Female", "className":"IT02", "gpa":3.7}
+]
