@@ -1,0 +1,145 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: db_w02
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: "123456"
+      POSTGRES_DB: student_db
+    ports:
+      - "15432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d student_db"]
+      interval: 5s
+      timeout: 30s
+      retries: 5
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  student_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_DIR: services/student-service
+    container_name: student_service_w02
+    env_file:
+      - .env.docker
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: student_db
+      GRPC_ADDRESS: 0.0.0.0:50051
+      HEALTH_PORT: 3001
+      NEED_SEED: "true"
+    entrypoint: ["/usr/local/bin/student-entrypoint.sh"]
+    command: ["npm", "start"]
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "50051:50051"
+      - "3001:3001"
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3001/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+
+  course_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_DIR: services/course-service
+    container_name: course_service_w02
+    env_file:
+      - .env.docker
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: course_db
+      GRPC_ADDRESS: 0.0.0.0:50052
+      HEALTH_PORT: 3002
+      NEED_SEED: "true"
+    entrypoint: ["/usr/local/bin/student-entrypoint.sh"]
+    command: ["npm", "start"]
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "50052:50052"
+      - "3002:3002"
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3002/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+
+  enrollment_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_DIR: services/enrollment-service
+    container_name: enrollment_service_w02
+    env_file:
+      - .env.docker
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: enrollment_db
+      GRPC_ADDRESS: 0.0.0.0:50053
+      HEALTH_PORT: 3003
+      NEED_SEED: "true"
+    entrypoint: ["/usr/local/bin/student-entrypoint.sh"]
+    command: ["npm", "start"]
+    depends_on:
+      db:
+        condition: service_healthy
+      student_service:
+        condition: service_healthy
+      course_service:
+        condition: service_healthy
+    ports:
+      - "50053:50053"
+      - "3003:3003"
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3003/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+
+  graphql_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_DIR: graphql-server
+    container_name: graphql_api_w02
+    env_file:
+      - .env.docker
+    environment:
+      PORT: 4000
+      STUDENT_SERVICE_ADDR: student_service:50051
+    depends_on:
+      student_service:
+        condition: service_healthy
+      course_service:
+        condition: service_healthy
+      enrollment_service:
+        condition: service_healthy
+    ports:
+      - "${PORT:-4000}:4000"
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:4000/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  db_data:

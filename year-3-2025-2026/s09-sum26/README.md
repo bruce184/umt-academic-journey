@@ -12,7 +12,7 @@ Semester 9 is now active. This folder tracks the first two weeks of Year 3 summe
 
 | Subject | Current coverage | Notes |
 | --- | --- | --- |
-| Web 3 | Week 1 GraphQL, Week 2 gRPC | Includes a Node/Apollo GraphQL lab with PostgreSQL, Knex, JWT auth, DataLoader, Docker files, and request collections. |
+| Web 3 | Week 1 GraphQL, Week 2 gRPC | Includes Node/Apollo GraphQL labs, PostgreSQL, Knex, JWT auth, DataLoader, Docker files, gRPC microservices, and a GraphQL API gateway. |
 | Mobile 3 | Week 1 concurrent programming | Includes Android/iOS reading material, example references, and a separate Flutter learning journey scaffold. |
 | Intro to Software Testing | Course slide set | Slides cover core testing concepts through API testing. |
 | Combinatorics and Graph Theory | Session 1 and textbook/reference material | Early-semester reference material is present locally. |
@@ -28,6 +28,7 @@ Semester 9 is now active. This folder tracks the first two weeks of Year 3 summe
 ### Week 2 - 2026-05-16
 
 - Web 3 gRPC lecture material added.
+- Web 3 lab02 source curated under `subjects/web-3/labs/lab02`, covering gRPC services, PostgreSQL, Docker Compose, and a GraphQL gateway.
 - Software Testing slide folder reviewed as part of semester setup.
 - Java backend and Flutter learning repositories are present locally as supporting self-study tracks.
 

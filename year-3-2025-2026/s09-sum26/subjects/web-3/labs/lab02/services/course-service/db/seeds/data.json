@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Web Development 3",
+    "description": "GraphQL, gRPC and service-to-service communication",
+    "credits": 3
+  },
+  {
+    "title": "Distributed Systems",
+    "description": "Microservices, messaging and observability basics",
+    "credits": 3
+  }
+]
